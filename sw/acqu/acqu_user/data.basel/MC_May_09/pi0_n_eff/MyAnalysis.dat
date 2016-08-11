@@ -1,0 +1,93 @@
+#########################################################################
+#                                                                       #
+# Physics analysis class configuration file                             #
+#                                                                       #
+#########################################################################
+
+
+Reconstruct:
+
+# MC run overwriting
+Run-Number: 999002
+
+# photon resolutions for CB
+Photon-Resolution-CB: $acqu/data/May_09/Calib/Photon_Res_CB_May_09.root
+
+# photon resolutions for TAPS
+Photon-Resolution-TAPS: $acqu/data/May_09/Calib/Photon_Res_TAPS_May_09.root
+
+# particle resolutions
+Particle-Resolutions: $HOME/loc/calibration/May_09/Particle_Resolutions.root
+
+# PID dE-E cuts
+PID-dE-E-Cuts: $HOME/loc/calibration/May_09/PID_dE_E_Cuts_MC.root
+
+# Veto dE-E cuts
+Veto-dE-E-Cuts: $HOME/loc/calibration/May_09/Veto_dE_E_Cuts_MC.root
+
+#
+# CaLib configuration
+#
+
+# General:      dbhost       dbname            dbuser      dbpass        calibration
+#Use-CaLib:      phys-jaguar  calib_may_2009    calib_ro    omega13       LD2_MC_May_09
+# General:      dbfile                                                   calibration
+Use-CaLib:      $HOME/loc/calibration/May_09/CaLib.db                    LD2_MC_May_09
+# tagger calib:     time    eff  (0=off/1=on)
+Use-CaLib-TAGG:     0       0
+# CB calib:         energy  time    timewalk    quadr. energy   LED thr.  (0=off/1=on)
+Use-CaLib-CB:       1       0       0           1               1
+# TAPS calib:       energy  time    quadr. energy   LED thr.    CFD thr.  (0=off/1=on)
+Use-CaLib-TAPS:     1       0       1               1           0
+# PID calib:        phi     energy  time  (0=off/1=on)
+Use-CaLib-PID:      0       0       0
+# Veto calib:       energy  time    LED thr.  (0=off/1=on)
+Use-CaLib-Veto:     0       0       0
+# Bad scaler reads  list    first   last (0=off/1=on)    lists (ALL, NaI, ..., NONE, space-sep. list)
+#Use-CaLib-BadScR:   1       1       1                    ALL
+
+#
+# software trigger configuration
+#
+
+# total multiplicity
+Trigger-Total-Mult: 2
+
+# TAPS alone multiplicity
+Trigger-TAPS-Mult: 9999
+
+# CB thresholds: total CB sum / CB segment sum
+Trigger-CB-Thresholds: 0 1
+
+# CB NaI relative gains
+Trigger-CB-Rel-Gains: $acqu/data/May_09/Calib/NaI_Rel_Gains_LD2_May_09.dat
+
+# CB sum CDF for MC
+#Trigger-CB-Sum-CDF: $acqu/data/May_09/Calib/CBsum_CDF_LD2_May_09_eta2g.root
+
+# TAPS LED1 thresholds
+Trigger-TAPS-LED1-Threshold: 1
+
+# TAPS LED2 thresholds
+Trigger-TAPS-LED2-Threshold: 9999
+
+# TAPS excluded rings
+Trigger-TAPS-Excluded-Rings: $acqu/data/May_09/Calib/trig_excl_taps_rings
+
+# Bad tagger channels
+Bad-Tagger-Channels: $acqu/data/May_09/Calib/tagg_bad
+
+# Bad CB cluster centers
+Bad-CB-Clusters: $acqu/data/May_09/Calib/cb_bad
+
+# Bad TAPS cluster centers
+Bad-TAPS-Clusters: $acqu/data/May_09/Calib/taps_bad
+
+# Pre-analysis
+PreAnalysis-Pi0-Neutron-Eff:
+
+# MC files:         #p  indices
+Save-MC-Particles:  2   4 5
+
+Initialise:
+

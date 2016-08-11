@@ -1,0 +1,295 @@
+################################################################################
+# Run list d-Butanol May 2016                                                  #
+################################################################################
+
+#13307 # test, cosmics, etc 
+#13308 # test, cosmics, etc
+#13309 # test, cosmics, etc
+#13310 # test, cosmics, etc
+#13311 # test, cosmics, etc
+#13312 # test, cosmics, etc
+#13315 # test, cosmics, etc
+#13319 # test, cosmics, etc
+#13320 # test, cosmics, etc
+#13321 # test, cosmics, etc
+#13322 # test, cosmics, etc
+#13325 # test, cosmics, etc
+#13328 # test, cosmics, etc
+#13329 # test, cosmics, etc
+#13330 # test, cosmics, etc
+#13333 # test, cosmics, etc
+#13334 # test, cosmics, etc
+#13335 # test, cosmics, etc
+#13336 # test, cosmics, etc
+#13337 # test, cosmics, etc
+#13338 # test, cosmics, etc
+#13339 # test, cosmics, etc
+#13340 # test, cosmics, etc
+#13343 # test, cosmics, etc
+#13347 # test, cosmics, etc
+#13348 # test, cosmics, etc
+#13349 # test, cosmics, etc
+#13352 # test, cosmics, etc
+#13353 # test, cosmics, etc
+#13354 # test, cosmics, etc
+#13355 # test, cosmics, etc
+#13356 # test, cosmics, etc
+#13357 # test, cosmics, etc
+#13358 # test, cosmics, etc
+#13359 # test, cosmics, etc
+#13360 # test, cosmics, etc
+#13361 # test, cosmics, etc
+#13362 # test, cosmics, etc
+#13363 # test, cosmics, etc
+#13364 # test, cosmics, etc
+
+# target polarization positive (prelim. 22%)
+13365
+13366
+13367
+13368
+13369
+13370
+13371
+13372
+13373
+13374
+13375
+13376
+13377
+13378
+13379
+13380
+13381
+13382
+13383
+13384
+13385
+13386
+13387
+13392
+13393
+13394
+13395
+13396
+13397
+13398
+13399
+13400
+13401
+13402
+13403
+13404
+13405
+13406
+13407
+13408
+13409
+13410
+13411
+13412
+13413
+13414
+13415
+13416
+13417
+13418
+13419
+13420
+13421
+13422
+13423
+13424
+13425
+13426
+13427
+13428
+13429
+13434
+13435
+13436
+13437
+13438
+13439
+13440
+13441
+13442
+13443
+13444
+13445
+13446
+13447
+13448
+13449
+13450
+13451
+13452
+13453
+13454
+13455
+13456
+13457
+13458
+13459
+13460
+13461
+13462
+13463
+13464
+13465
+13466
+13467
+13468
+13469
+13470
+13471
+13472
+13473
+13474
+13475
+13476
+13477
+13478
+13479
+13480
+13481
+13482
+13483
+13490
+13491
+13492
+13493
+13494
+
+
+# badscr calibration don frome here (NaI only)
+
+# new setting:
+# Tagger sections: A-E, F (F1-F16)
+# new energy sum > 350 MeV
+# new LED1/2 of Ring 4: 70 MeV
+13495
+13496
+13497
+13498
+13499
+13500
+13501
+#13502 # short (0 scr)
+13503
+13504
+13505
+13506
+13507
+13508
+13509
+13510
+13511
+#13512 # short (4 scr)
+13513
+13514
+13515
+13516
+13517
+13518
+13519
+13520
+13521
+13522
+#13523 # Cosmics
+#13524 # Cosmics
+#13525 # Cosmics
+13526
+13527
+13528
+13529
+#13530 # short (5 scr)
+13531
+#13532 # short (2 scr)
+13533
+13534
+13535
+13536
+13541
+13543
+13544
+# 13545 # missing cb channels from the start
+13546
+# 13547 # missing cb channels from the start
+13548
+13549
+13550
+13551
+13552
+13553
+13554
+13555
+13556
+13557
+#13558 # DAQ problem 
+#13559 # DAQ problem
+#13560 # DAQ problem
+#13561 # DAQ problem
+#13562 # DAQ problem
+#13564 # DAQ problem
+#13565 # DAQ problem
+#13566 # DAQ problem
+#13567 # DAQ problem
+#13568 # DAQ problem
+13569
+13570
+13571
+13572
+13573
+13574
+13575
+13576
+13577
+13578
+13579
+#13580 # short (2 scr)
+13581
+13582
+#13583 # cosmics
+13584
+#13585 # short (5 scr)
+13586
+13587
+#13588 # short (0 scr)
+13589
+#13590 # short (2 scr)
+13591
+13594
+13595
+13596
+13597
+13598
+13599
+13600
+13601
+#13602 # short (3 scr)
+13603
+13604
+13605
+#13606 # short (0 scr)
+#13607 # short (3 scr) && missing cb channels from the start
+13608
+13609
+13610
+13611
+13612
+13613
+13614
+#13615 # short (4 scr)
+13616
+13617
+13618
+13619
+13620
+13621
+
+
+
+# target polarization down (prelim ??%)
+
+#finito

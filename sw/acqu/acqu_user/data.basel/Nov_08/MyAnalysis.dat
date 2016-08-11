@@ -1,0 +1,105 @@
+#########################################################################
+#                                                                       #
+# Physics analysis class configuration file                             #
+#                                                                       #
+#########################################################################
+
+
+Reconstruct:
+
+# L2 trigger multiplicity bits  (Dec 2007)
+#               M1+    M2+    M3+    M4+
+L2-Multi-Bits:  0x00   0x10   0x20   0x00
+
+# PID droop correction
+#PID-Droop-Corr: $acqu/data/Dec_07/Calib/PID_Droop_Corr_LD2_Dec_07.root
+
+# TAPS PSA       sigma      excl. nucleon min.      excl. nucleon max
+TAPS-PSA-Config: 3.         85.                     380.
+TAPS-PSA-Data: $acqu/data/Nov_08/calib/PSA_He3_Nov_08.root
+
+# Tagger prompt window
+#Tagger-Prompt: $acqu/data/Nov_08/calib/prompt_cut_Nov_08.root
+
+# Tagger random subtraction
+Tagger-Prompt: $acqu/data/Nov_08/calib/Prompt_Cuts.root
+Tagger-Background-Tagger:   -350. -50.  50. 500.
+Tagger-Background-CB:       -500. -50.  50. 350.
+Tagger-Background-TAPS:     -500. -50.  50. 350.
+
+# photon resolutions for CB
+Photon-Resolution-CB: $acqu/data/Nov_08/calib/Photon_Res_CB.root
+
+# photon resolutions for TAPS
+Photon-Resolution-TAPS: $acqu/data/Nov_08/calib/Photon_Res_TAPS.root
+
+#
+# CaLib configuration
+#
+# General:      dbhost       dbname   dbuser      dbpass        calibration
+#Use-CaLib:      phys-jaguar  calib_nov_2008    calib_ro    omega13       He3_Nov_08
+# General:      dbfile                                                   calibration
+Use-CaLib:      $HOME/loc/calibration/Nov_08/CaLib.db                    He3_Nov_08
+# tagger calib:     time    eff  (0=off/1=on)
+Use-CaLib-TAGG:     1       0
+# CB calib:         energy  time    timewalk    quadr. energy   LED thr.  (0=off/1=on)
+Use-CaLib-CB:       1       1       1           1               1
+# TAPS calib:       energy  time    quadr. energy   LED thr.    CFD thr.  (0=off/1=on)
+Use-CaLib-TAPS:     1       1       1               1           1
+# PID calib:        phi     energy  time  (0=off/1=on)
+Use-CaLib-PID:      1       1       1
+# Veto calib:       energy  time    LED thr.  (0=off/1=on)
+Use-CaLib-Veto:     1       1       1
+# Bad scaler reads  list    first   last (0=off/1=on)    lists (ALL, NaI, ..., NONE, space-sep. list)
+Use-CaLib-BadScR:   0       1       0                    ALL
+
+#
+# software trigger configuration
+#
+
+# total multiplicity
+Trigger-Total-Mult: 2
+
+# no contributions from TAPS to total multiplicity
+#Trigger-Total-Mult-No-TAPS:
+
+# TAPS alone multiplicity
+Trigger-TAPS-Mult: 9999
+
+# CB thresholds: total CB sum / CB segment sum
+Trigger-CB-Thresholds: 0 1
+#Trigger-CB-Thresholds: 100 1
+
+#for MC
+#Trigger-CB-Sum-CDF: $acqu/data/MC_Nov_08/calib/CBEsum_CFD_Nov08.root
+
+# TAPS LED1 thresholds
+Trigger-TAPS-LED1-Threshold: 1
+#Trigger-TAPS-LED1-Threshold: 5
+
+# TAPS LED2 thresholds
+Trigger-TAPS-LED2-Threshold: 9999
+
+# TAPS excluded rings
+Trigger-TAPS-Excluded-Rings: $acqu/data/Nov_08/calib/trig_excl_taps_rings
+
+# Bad tagger channels
+Bad-Tagger-Channels: $acqu/data/Nov_08/calib/BadTaggCh
+
+# Bad CB cluster centers
+#Bad-CB-Clusters: $acqu/data/Dec_07/Calib/cb_bad
+
+# Bad TAPS cluster centers
+Bad-TAPS-Clusters: $acqu/data/Nov_08/calib/taps_bad
+
+# sub-cluster finder config
+Sub-Clusters-Finder-CB: 8.0 3.0 7.0
+Sub-Clusters-Finder-TAPS: 1.5 0.0 0.0
+
+
+# Pre-analysis
+PreAnalysis-KPlus:
+
+
+Initialise:
+

@@ -1,0 +1,172 @@
+##-----------------------------------------------------------------------
+##--Author	JRM Annand   29th Apr 2003
+##--Update	JRM Annand... 1st Dec 2004
+##--Description
+##                *** Acqu++ <-> Root ***
+## Online/Offline Analysis of Sub-Atomic Physics Experimental Data 
+##
+## Parameter File: CBanalysis.dat (specified in CB.Offline)
+## Setup basic parameters of analysis to be used
+## This one sets up an analysis of CB-TAPS-Tagger data
+##
+##-----------------------------------------------------------------------
+##
+## The following give sample specifications for
+## handlers for flash or multihit ADCs or TDCs
+##
+## Catch-TDC, where a reference TDC channel has to be specified
+## The reference TDC channel contains the trigger time which is subtracted
+## from the other specified channels
+## CB TDC's
+##              #hits   start   stop    reference
+MultiADC:       3       1401    1911    1400
+#MultiADC:	1	1400	1400	2000
+MultiADC:       3       2001    2767    2000
+#MultiADC:       3       4000    4511    2000
+## TAPS inner ring
+MultiADC:       3       30201   30224   30200
+#MultiADC:       3       30201   30350   30200
+#MultiADC:       3       30601   30618   30600
+##
+##
+## SG ADC read out in 3-sum mode (#hits is always 3)
+## DC # channels summed for the pedestal (before signal leading edge)
+## signal # channels summed for the signal region of the pulse
+## tail # channels summed for the tail region (after signal trailing edge)
+## CB S-ADC's
+#               #hits   start   stop    DC      signal  tail
+MultiADC:       3       3000    3735    30      30      30
+## MWPC strip S-ADC's (switched to single-value read)
+#MultiADC:       3       5000    5319    30      30      30
+#
+## Stuff to monitor time dependence of counting rates and the hit pattern
+## coming from the trigger box....the parameter is the setup file name
+RateMonitor: data/Nov_08/Trigger/Trigger.Rate
+BitPattern:  data/Nov_08/Trigger/Trigger.Pat
+##
+## Apparatus setup....
+## Raw analysis may be performed without Apparati
+####              Name            Class           	Setup file
+Apparatus:      Misc	        TA2GenericApp  		data/Nov_08/Trigger/TrigMisc.13.07.07
+Apparatus:      TAGG            TA2Tagger   	        data/Nov_08/Tagger/Tagger.dat
+Apparatus:      CB              TA2MyCrystalBall  	data/Nov_08/CB/CB_PID.dat
+Apparatus:      TAPS            TA2MyTAPS  		data/Nov_08/TAPS/TAPS.dat
+##
+## Turn on apparatus-level reconstruction
+Reconstruct-Analysis:
+##
+## Specify physics analysis
+##			Name	Class		Config File
+#Physics-Analysis:       MyPreAnalysis   TA2MyPreAnalysis        data/Nov_08/MyPreAnalysis.dat
+#Physics-Analysis:       MyCaLib         TA2MyCaLib              data/Nov_08/MyCaLib.dat
+#Physics-Analysis:	MyAnalysis      TA2MyAnalysis	         data/Nov_08/MyPreAnalysis.dat
+Physics-Analysis:       MyPreAnalysis   TA2MyPreAnalysis        data/Nov_08/MyAnalysis.dat
+##
+## Do some post initialisation...usually necessary
+Initialise:
+##
+## Setup of extra procedures to run at periodic intervals
+## The procedures are usually held in macro script files
+## Period...every N events
+##		N	Macro File	Macro Procedure
+Period:	100000	root/macros/PeriodMacro.C	PeriodMacro()
+##
+## EndFile...each time an input data file is closed
+#EndFile:	root/macros/EndFileMacro_v4.C  EndFileMacro()
+#EndFile:	root/macros/EndFileMacro.C  EndFileMacro()
+#EndFile:  
+##
+## Finish...when all input data files processed
+Finish:	        root/macros/MyFinishMacro.C  MyFinishMacro()
+##
+#Display: All
+## TAPS Block A
+## LG
+#Display: ADC 20201 20264
+## SG
+#Display: ADC 20301 20364
+## TDC
+#Display: ADC 20401 20464
+## Veto ADC
+#Display: ADC 26001 26064
+## Veto TDC
+#Display: ADC 26301 26364
+##
+## TAPS Block B
+## LG
+#Display: ADC 21201 21264
+## SG
+#Display: ADC 21301 21364
+## TDC
+#Display: ADC 21401 21464
+## Veto ADC
+#Display: ADC 26065 26128
+## Veto TDC
+#Display: ADC 26365 26428
+##
+## TAPS Block C
+## LG
+#Display: ADC 22201 22264
+## SG
+#Display: ADC 22301 22364
+## TDC
+#Display: ADC 22401 22464
+## Veto ADC
+#Display: ADC 27001 27064
+## Veto TDC
+#Display: ADC 27301 27364
+##
+## TAPS Block D
+## LG
+#Display: ADC 23201 23264
+## SG
+#Display: ADC 23301 23364
+## TDC
+#Display: ADC 23401 23464
+## Veto ADC
+#Display: ADC 27065 27128
+## Veto TDC
+#Display: ADC 27365 27428
+##
+## TAPS Block E
+## LG
+#Display: ADC 24201 24264
+## SG
+#Display: ADC 24301 24364
+## TDC
+#Display: ADC 24401 24464
+## Veto ADC
+#Display: ADC 28001 28064
+## Veto TDC
+#Display: ADC 28301 28364
+##
+## TAPS Block F
+## LG
+#Display: ADC 25201 25264
+## SG
+#Display: ADC 25301 25364
+## TDC
+#Display: ADC 25401 25464
+## Veto ADC
+#Display: ADC 28065 28128
+## Veto TDC
+#Display: ADC 28365 28428
+
+#Display: Scaler 0 11
+#Display: SumScaler 0 11
+#Display: Scaler 12 363
+#Display: SumScaler 12 363
+#Display: Scaler 364 405
+#Display: SumScaler 364 405
+Display: Scaler 0 632
+Display: SumScaler 0 632
+## Trigger pattern, and e-beam polarisation bits
+#Display: Pattern	0 16 0 16
+#Display: Pattern	1 8 0 8
+#
+
+## END OF FILE
+
+#
+# Genereted by iChangeARconfig for run : 20025
+#

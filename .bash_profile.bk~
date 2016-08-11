@@ -1,0 +1,90 @@
+source ~/.bashrc
+export EDITOR=vim
+shopt -s direxpand
+
+# set hostname variable if not set
+if [ "$HOST" == "" ];  then
+    export HOST=`hostname`
+fi
+
+if [ $HOST == "phys-cougar.physik.unibas.ch" ]; then
+    echo "Welcome to Cougar!"
+elif [ $HOST == "phys-lion" ]; then			
+    module load i686/gcc/3.3
+    module load i686/cernlib/gcc3.3/2003
+    export FFCARDS=debug.ffcards
+    export INPUTFILE=input.hbook
+    export OUTPUTFILE=output.hbook
+else
+    export LIBRARY_PATH=/usr/lib/x86_64-linux-gnu	#start your changes here for piptof to glasgow differences. See HERE DOM
+    module load x86_64/gcc/4.3
+    module load x86_64/cmake/gcc4.3
+    module load x86_64/git/gcc4.3
+    export CC=`which gcc`
+    export CXX=`which g++`
+
+    module load x86_64/root/5.34/gcc4.3-latest
+    
+    module load x86_64/geant4/gcc4.3/4.9.6.p04
+    export G4WORKDIR=/usr/users/werthm/sw/geant4
+    . /usr/kernph_x86_64/pkg/geant4/4.9.6.p04/gcc4.3/share/Geant4-9.6.4/geant4make/geant4make.sh
+    export LD_LIBRARY_PATH="$G4WORKDIR/tmp/$G4SYSTEM/A2:$LD_LIBRARY_PATH"
+
+#Everything after this point should be fine for both piptof and glasgow. END HERE
+
+
+    # AcquRoot
+    export acqu="$HOME/BaselFarm/sw/acqu/acqu_user"
+    export PATH="$HOME/BaselFarm/sw/acqu/bin:$PATH"
+    export LD_LIBRARY_PATH="$HOME/BaselFarm/sw/acqu/lib:$LD_LIBRARY_PATH"
+
+    # OSCAR
+    export OSCAR="$HOME/BaselFarm/sw/OSCAR"
+    export PATH="$OSCAR/bin:$PATH"
+    export LD_LIBRARY_PATH="$OSCAR/lib:$LD_LIBRARY_PATH"
+
+    # CaLib
+    export CALIB="$HOME/BaselFarm/sw/CaLib"
+    export PATH="$CALIB/bin:$PATH"
+    export LD_LIBRARY_PATH="$CALIB/lib:$LD_LIBRARY_PATH"
+    
+    # FooFit
+    export LD_LIBRARY_PATH="$HOME/BaselFarm/sw/FooFit/lib:$LD_LIBRARY_PATH"
+
+    # other binaries and scripts
+    export PATH="$HOME/BaselFarm/sw/bin:$PATH"
+fi
+
+if [ $HOST == "phys-cougar.physik.unibas.ch" ];  then
+    alias l='ls -lthr'
+else
+    alias l='ls -lthr --color=auto'
+fi
+
+alias "gt=git status ."
+alias gl='git log --follow --name-status .'
+#alias gll='git log --graph --full-history --all --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20%s"'
+#alias gll="git log --pretty=format:'%C(yellow)%h%Cred%d%Creset - %C(cyan)%an %Creset: %s %Cgreen(%cr)'"
+alias gll="git log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) %x09 %C(bold green)%<(15)%cr%C(reset)  %C(reset) %C(cyan)%<(20)%an%C(reset)  %C(reset) %C(red)%d%C(reset) %s' --all"
+alias "root=root -l"
+alias "k=kill -9"
+alias "p=ps -u chris fx" 		#different for piptof, no need to change anything after this.
+alias "mo=ssh -C -X phys-monterosa"
+alias "ro=ssh -X root@localhost"
+alias "li=ssh -X phys-lion"
+alias "cou=ssh -C -X phys-cougar"
+alias "rcou=ssh -C -X root@phys-cougar"
+alias "pu=ssh -C -X phys-puma"
+alias "ti=ssh -C -X phys-tiger"
+alias "ja=ssh -C -X phys-jaguar"
+alias "rja=ssh -C -X root@phys-jaguar"
+alias "pu=ssh -C -X phys-puma"
+alias "rpu=ssh -C -X root@phys-puma"
+alias "le=ssh -C -X phys-leopard"
+alias "ch=ssh -C -X phys-cheetah"
+alias "pa=ssh -C -X phys-panther"
+alias "li=ssh -C -X phys-lynx"
+alias "oc=ssh -C -X phys-ocelot"
+alias "ser=ssh -C -X phys-serval"
+alias "car=ssh -C -X phys-caracal"
+

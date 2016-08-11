@@ -1,0 +1,22 @@
+Warning in <TDatabasePDG::TDatabasePDG>: object already instantiated
+Info in <TA2MyCaLib::SetConfig>: Using L1 trigger bits: CB (0x8000), TAPS_OR (0x0040), TAPS_M2 (0x0080), Pulser (0x4000), TAPS Pulser (0x8000)
+Info in <TA2MyCaLib::SetConfig>: Reading CB sum trigger from L2 trigger pattern
+Info in <TA2MyCaLib::SetConfig>: Using L2 trigger multiplicity bits: M1+ (0x0200), M2+ (0x0400), M3+ (0x0800), M4+ (0x1000)
+Info in <TA2MyCaLib::SetConfig>: Using beam helicity bit ADC 7
+Info in <TA2MyCaLib::SetConfig>: Using beam helicity bit: 41477 (+) and 41480 (-)
+Info in <CaLibReader_t>: Trying to connect to the database 'sqlite:///usr/users/mullen/CaLib_DB/May_16/CaLib.db' ...
+Info in <CaLibReader_t>: Successfully connected to CaLib database
+Info in <TA2MyCaLib::SetConfig>: Using calibration 'D-Butanol_May_16' from the CaLib database '/usr/users/mullen/CaLib_DB/May_16/CaLib.db'
+Info in <ApplyTAGGcalib>: TAGG time calibration was applied
+Info in <ApplyCBcalib>: CB energy calibration was applied
+Info in <ApplyCBcalib>: CB time calibration was applied
+Info in <ApplyTAPScalib>: TAPS energy calibration was applied
+Info in <ApplyTAPScalib>: TAPS time calibration was applied
+Info in <ApplyPIDcalib>: PID phi calibration was applied
+Info in <ApplyPIDcalib>: PID energy calibration was applied
+Info in <ApplyPIDcalib>: PID time calibration was applied
+Info in <ApplyVetocalib>: Veto energy calibration was applied
+Info in <ApplyVetocalib>: Veto time calibration was applied
+Error in <TBufferFile::WriteByteCount>: bytecount too large (more than 1073741822)
+Error in <TBufferFile::WriteByteCount>: bytecount too large (more than 1073741822)
+cp: cannot stat ‘/scratch/werthm/ARHistograms_CBTaggTAPS_14193.root’: No such file or directory

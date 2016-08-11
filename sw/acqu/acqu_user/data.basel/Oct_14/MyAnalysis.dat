@@ -1,0 +1,156 @@
+#########################################################################
+#                                                                       #
+# Physics analysis class configuration file                             #
+#                                                                       #
+#########################################################################
+
+
+Reconstruct:
+
+# L1 trigger bits
+#         CB      TAPS OR  TAPS M2  Pulser  TAPS Pulser 
+L1-Bits:  0x8000  0x0040   0x0080   0x4000  0x8000
+# Read CB sum with the bit specified above from L2 instead of L1
+L1-CBSum-in-L2:
+
+# L2 trigger multiplicity bits
+#               M1(+)   M2      M3      M4+
+L2-Multi-Bits:  0x0200  0x0400  0x0800  0x1000
+
+# Beam helicity settings (41480 is hel state 0, 41477 is hel state 1)
+Beam-Pol-ADC: 7
+Beam-Pol-Bits: 41477 41480
+
+# relative/absolute livetime correction for tagger scalers
+#                    live CB   free CB   live tagg   free tagg  P2
+TaggSc-Live-Corr:    190       191       190         191        203
+
+# TAPS PSA       sigma      excl. nucleon min.      excl. nucleon max
+#TAPS-PSA-Config: 3.         85.                     380.
+#TAPS-PSA-Data: $HOME/loc/calibration/Apr_13/PSA_Cuts.root
+
+# Tagger random subtraction
+Tagger-Prompt: $HOME/loc/calibration/Oct_14/Prompt_Cuts.root
+Tagger-Background-Tagger:   -500.  -50.  50. 500.
+#Tagger-Background-CB:       -500.  -50.  50. 500.
+Tagger-Background-CB:       -300.  -50.  50. 300.
+Tagger-Background-TAPS:     -300.  -50.  50. 300.
+Tagger-No-BG-Subtr:
+
+# photon resolutions for CB
+#Photon-Resolution-CB: $acqu/data/Apr_09/Calib/Photon_Res_CB_Apr_09.root
+
+# photon resolutions for TAPS
+#Photon-Resolution-TAPS: $acqu/data/Apr_09/Calib/Photon_Res_TAPS_Apr_09.root
+
+# particle resolutions
+#Particle-Resolutions: $HOME/loc/calibration/Apr_09/Particle_Resolutions.root
+
+# PID dE-E cuts
+#PID-dE-E-Cuts: $HOME/loc/calibration/Apr_13/PID_dE_E_Cuts.root
+
+# Veto dE-E cuts
+#Veto-dE-E-Cuts: $HOME/loc/calibration/Apr_13/Veto_dE_E_Cuts.root
+
+#
+# CaLib configuration
+#
+
+# General:      dbhost       dbname            dbuser      dbpass        calibration
+#Use-CaLib:      phys-jaguar  calib_jul_2014    calib_ro    omega13       LH2_Oct_14
+# General:      dbfile                                                   calibration
+Use-CaLib:      $HOME/loc/calibration/Oct_14/CaLib.db                    LH2_Oct_14
+# tagger calib:     time    eff  (0=off/1=on)
+Use-CaLib-TAGG:     1       0
+# CB calib:         energy  time    timewalk    quadr. energy   LED thr.  (0=off/1=on)
+Use-CaLib-CB:       1       1       1           0               0
+# TAPS calib:       energy  time    quadr. energy   LED thr.    CFD thr.  (0=off/1=on)
+Use-CaLib-TAPS:     1       1       0               0           1
+# PID calib:        phi     energy  time  (0=off/1=on)
+Use-CaLib-PID:      1       1       1
+# Veto calib:       energy  time    LED thr.  (0=off/1=on)
+Use-CaLib-Veto:     1       1       1
+# Bad scaler reads  list    first   last (0=off/1=on)    lists (ALL, NaI, ..., NONE, space-sep. list)
+Use-CaLib-BadScR:   0       1       1                    ALL
+
+#
+# software trigger configuration
+#
+
+# total multiplicity
+#Trigger-Total-Mult: 0
+
+# no contributions from TAPS to total multiplicity
+#Trigger-Total-Mult-No-TAPS:
+
+# TAPS alone multiplicity
+#Trigger-TAPS-Mult: 9999
+
+# CB thresholds: total CB sum / CB segment sum
+#Trigger-CB-Thresholds: 0 30
+
+# TAPS LED1 thresholds
+#Trigger-TAPS-LED1-Threshold: 30
+
+# TAPS LED2 thresholds
+#Trigger-TAPS-LED2-Threshold: 9999
+
+# Bad tagger channels
+Bad-Tagger-Channels: $acqu/data/Oct_14/Calib/tagg_bad
+
+# Bad CB cluster centers
+Bad-CB-Clusters: $acqu/data/Oct_14/Calib/cb_bad
+
+# Bad TAPS cluster centers
+#Bad-TAPS-Clusters: $acqu/data/Oct_14/Calib/taps_bad
+
+# sub-cluster finder config
+Sub-Clusters-Finder-CB: 8.0 3.0 7.0
+Sub-Clusters-Finder-TAPS: 1.5 0.0 0.0
+
+
+# Pre-analysis
+#PreAnalysis-Eta2g-fulinc:
+#PreAnalysis-Eta2g-qfinc:
+#PreAnalysis-Eta2g-fulexc-p:
+#PreAnalysis-Eta2g-fulexc-n:
+#PreAnalysis-Eta6g-fulinc:
+#PreAnalysis-Eta6g-qfinc:
+#PreAnalysis-Eta6g-fulexc-p:
+#PreAnalysis-Eta6g-fulexc-n:
+#PreAnalysis-Eta2g-free:
+#PreAnalysis-Eta6g-free:
+#PreAnalysis-Eta6g-free-KF:
+#PreAnalysis-Eta3Pi-free:
+#PreAnalysis-Pi0-PiPlus-free:
+#PreAnalysis-Pi0-PiPlus-PiMinus-free:
+#PreAnalysis-Pi0-free:
+#PreAnalysis-2Pi0-free:
+#PreAnalysis-EtaPrime-fulinc:
+#PreAnalysis-Compton-p:
+#PreAnalysis-Compton-n:
+#PreAnalysis-K0-Lambda:
+#PreAnalysis-Pi0-PiMinus-fulexc-n:
+#PreAnalysis-Pi0-Neutron-Eff:
+#PreAnalysis-PiPlus-PiMinus-fulexc-n:
+#PreAnalysis-Omega-free:
+#PreAnalysis-Omega-qfinc:
+#PreAnalysis-Omega-fulexc-p:
+#PreAnalysis-Omega-fulexc-n:
+#PreAnalysis-Omega3Pi-fulexc-p:
+#PreAnalysis-Omega3Pi-fulexc-n:
+#PreAnalysis-K0-Lambda-fulexc-n:
+#PreAnalysis-K0-Sigma-fulexc-n:
+#PreAnalysis-KPlus-Sigma-fulexc-n:
+#PreAnalysis-Generic: 2 3
+PreAnalysis-Generic: 3 3
+#PreAnalysis-KPlus: 4 7
+#PreAnalysis-KPlus-Neut: 5 6
+#PreAnalysis-K0-Y-fulexc-n:
+#PreAnalysis-K0-Y-mixed-fulexc-n:
+
+Initialise:
+
+# data cut for saving to reduced file
+#Data-Cut: 1D    SaveEvent   AND data  1 1
+

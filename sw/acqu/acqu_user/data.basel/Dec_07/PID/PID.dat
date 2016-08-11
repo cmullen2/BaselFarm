@@ -1,0 +1,61 @@
+#########################################################################
+#                                                                       #
+# PID configuration file for the December 07 beamtime                   #
+#                                                                       #
+# Changes:                                                              #
+# July 10 2008 : Fixed wrong phi values                                 #
+# March 5 2008 : Added calibrated phi values                            #
+# Sept  9 2009 : Added calibrated gains and pedestals                   #
+#                                                                       #
+#########################################################################
+
+# Total # Elements in array, Pulse-Height info? Time info? Position info?
+# Info switch is off/on = 0/1
+#	Total	Energy?	Time?	Position?
+Size:	24	1	1	1
+#RawHits:
+#
+# Calibration factors for each PID element...one line for each
+# Can optionally enter TDC-Time onfo...extra 5 parameters per line
+# low, high are energy cuts, ped is the pedestal, MeV/chan conversion gain
+#	ADC#  low    hig   ped MeV/ch	TDC#  low/high off ns/ch   Position [r(# mm),theta,phi)]
+Element: 131  0.350  50  0   0.01  2016M0  0 120  -3149  0.117  51.0  0.0   89.72
+Element: 130  0.350  50  0   0.01  2017M0  0 120  -3143  0.117  51.0  0.0  104.66
+Element: 129  0.350  50  0   0.01  2018M0  0 120  -3155  0.117  51.0  0.0  119.60
+Element: 128  0.350  50  0   0.01  2019M0  0 120  -3147  0.117  51.0  0.0  134.54
+Element: 127  0.350  50  0   0.01  2020M0  0 120  -3152  0.117  51.0  0.0  149.48
+Element: 126  0.350  50  0   0.01  2021M0  0 120  -3148  0.117  51.0  0.0  164.42
+Element: 125  0.350  50  0   0.01  2022M0  0 120  -3143  0.117  51.0  0.0  179.36
+Element: 124  0.350  50  0   0.01  2023M0  0 120  -3135  0.117  51.0  0.0 -164.87
+Element: 123  0.350  50  0   0.01  2024M0  0 120  -3135  0.117  51.0  0.0 -149.31
+Element: 100  0.350  50  0   0.01  2025M0  0 120  -3136  0.117  51.0  0.0 -134.37
+Element: 121  0.350  50  0   0.01  2026M0  0 120  -3145  0.117  51.0  0.0 -119.43
+Element: 120  0.350  50  0   0.01  2027M0  0 120  -3148  0.117  51.0  0.0 -104.49
+Element: 119  0.350  50  0   0.01  2028M0  0 120  -3141  0.117  51.0  0.0  -89.55
+Element: 118  0.350  50  0   0.01  2029M0  0 120  -3138  0.117  51.0  0.0  -74.61
+Element: 117  0.350  50  0   0.01  2030M0  0 120  -3140  0.117  51.0  0.0  -59.68
+Element: 116  0.350  50  0   0.01  2031M0  0 120  -3132  0.117  51.0  0.0  -44.74
+Element: 115  0.350  50  0   0.01  2008M0  0 120  -3093  0.117  51.0  0.0  -29.80
+Element: 114  0.350  50  0   0.01  2009M0  0 120  -3093  0.117  51.0  0.0  -14.86
+Element: 113  0.350  50  0   0.01  2010M0  0 120  -3091  0.117  51.0  0.0    0.08
+Element: 112  0.350  50  0   0.01  2011M0  0 120  -3098  0.117  51.0  0.0   15.02
+Element: 111  0.350  50  0   0.01  2012M0  0 120  -3103  0.117  51.0  0.0   29.96
+Element: 110  0.350  50  0   0.01  2013M0  0 120  -3091  0.117  51.0  0.0   44.90
+Element: 109  0.350  50  0   0.01  2014M0  0 120  -3087  0.117  51.0  0.0   59.84
+Element: 108  0.350  50  0   0.01  2015M0  0 120  -3083  0.117  51.0  0.0   74.78
+#
+## Do some further array initialisation BEFORE display specification
+Initialise:
+##
+##	Histograming of basic detector stuff
+##
+#Display:	1D	Nhits  	24 0 24
+#Display:	1D	Hits		24	0	24
+## Total Energy deposited in the array, 1000 channels, range 0 -- 200 MeV
+#Display:	1D	Etot	 400 	0 	200
+## Energy deposited in individual elements, 200 channels, range 0 -- 20 MeV
+#Display:	1D	Energy	200 0 5	0 23
+#
+#Display:	1D	Time   120 0. 120.	0 24
+#Display:	2D	TimeOR 120 0. 120 -1 Hits 24 0 24 -1
+#Display:	2D	EnergyOR 100 0 10 -1 Hits 24 0 24 -1

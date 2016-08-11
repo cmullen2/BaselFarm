@@ -1,0 +1,192 @@
+#!/bin/bash
+
+################################################################################
+#                                                                              #
+# ARSubmitMC                                                                   #
+#                                                                              #
+# Author: Dominik Werthmueller, 2010-2016                                      #
+#                                                                              #
+################################################################################
+
+
+################################################################################
+# Global variables                                                             #
+################################################################################
+
+OUT_DIR=""
+QS=""
+HOST=`hostname -s`
+
+################################################################################
+# Function: Look for a queueing system                                         #
+################################################################################
+
+function searchQS {
+    PBS_NODES=`command -v pbsnodes`
+    SLURM=`command -v sinfo`
+    # Portable Batch System
+    if [ "$PBS_NODES" != "" ]; then
+        echo PBS
+    # Sun Grid Engine
+    elif [ -n "$SGE_ROOT" ]; then
+        echo SGE
+    # SLURM
+    elif [ "$SLURM" != "" ]; then
+        echo SLURM
+    fi
+}
+
+################################################################################
+# Function: Submit a job                                                       #
+################################################################################
+
+function submit {
+    # get data file
+    DATA_FILE_FULL=`ls $1 2> /dev/null`
+
+    # check if data file exists
+    if [ "$DATA_FILE_FULL" != "" ]; then
+        
+        # get data file and directory
+        DATA_FILE=`ls $1 | xargs basename`
+        DATA_DIR=`dirname $1`
+        DATA_DIR=${DATA_DIR##/*/}
+    
+        # skip analysis if file already exists
+        if [ "$HOST" == "npcfsa" ]; then
+            OUT_FILE=`eval ls $OUT_DIR/ARHistograms_werthm"_"$DATA_FILE 2> /dev/null`
+        else
+            OUT_FILE=`eval ls $OUT_DIR/ARHistograms_$DATA_FILE 2> /dev/null`
+        fi
+        if [ -e "$OUT_FILE" ]; then
+            echo Skipping $DATA_FILE
+            return
+        fi
+
+        # create the job file
+        JF=/tmp/AR_$DATA_FILE.sh
+        echo "#!/bin/sh" > $JF
+
+        # add queueing system specific header
+        # Portable Batch System
+        if [ "$QS" == "PBS" ]; then
+            echo "#PBS -S /bin/bash" >> $JF
+            echo "#PBS -N AR_$DATA_FILE" >> $JF
+            echo "#PBS -j oe" >> $JF
+            echo "#PBS -o $LOG_DIR" >> $JF
+            echo "#PBS -V" >> $JF
+            echo "#PBS -l walltime=24:00:00" >> $JF
+        # Sun Grid Engine
+        elif [ "$QS" == "SGE" ]; then
+            echo "#$ -S /bin/bash" >> $JF
+            echo "#$ -e $LOG_DIR" >> $JF
+            echo "#$ -o $LOG_DIR" >> $JF
+        elif [ "$QS" == "SLURM" ]; then
+            echo "#!/bin/bash" >> $JF
+            echo "#SBATCH -J AR_$DATA_FILE" >> $JF
+            echo "#SBATCH -o $LOG_DIR/AR_"$DATA_FILE"_%N.%j.out" >> $JF
+            echo "#SBATCH --time=100:00:00" >> $JF
+        fi
+
+        # pre-job stuff
+        if [ "$HOST" == "npcfsa" ]; then
+            #echo "bbcp -v -z npcfsa:$DATA_FILE_FULL /scratch/werthm" >> $JF
+            echo "scp -c arcfour npcfsa:$DATA_FILE_FULL /scratch/werthm" >> $JF
+        fi
+
+        # complete job file
+        echo "cd $acqu" >> $JF
+        if [ "$HOST" == "npcfsa" ]; then
+            echo "AcquRoot $CB_OFFLINE --batch --nolog --datafile /scratch/werthm/$DATA_FILE" >> $JF
+        else
+            echo "AcquRoot $CB_OFFLINE --batch --nolog --datafile $DATA_FILE_FULL" >> $JF
+        fi
+
+        # post-job stuff
+        if [ "$HOST" == "npcfsa" ]; then
+            echo "scp -c arcfour /scratch/werthm/ARHistograms_werthm_$DATA_FILE npcfsa:$OUT_DIR" >> $JF
+            echo "rm -f /scratch/werthm/$DATA_FILE" >> $JF
+            echo "rm -f /scratch/werthm/ARHistograms_werthm_$DATA_FILE" >> $JF
+        fi
+
+        # submit the job 
+        echo Submitting $DATA_FILE
+        if [ "$QS" == "SLURM" ]; then
+            sbatch $JF > /dev/null
+        else
+            qsub $SUBMIT_ARGS $JF
+        fi
+
+        # delete the job file
+        rm $JF
+    else
+        echo Data file $1 not found!
+        return
+    fi
+}
+
+################################################################################
+# Main function                                                                #
+################################################################################
+
+# check arguments
+if [ $# -eq 2 ]; then
+
+    # read the configuration
+    source $1
+
+    # check variables
+    if [ "$CB_OFFLINE" == "" ]; then
+        echo Error: CB_OFFLINE variable not set.
+        exit
+    fi
+    if [ "$LOG_DIR" == "" ]; then
+        echo Error: LOG_DIR variable not set.
+        exit
+    fi
+
+    # search queueing system
+    QS=$(searchQS)
+
+    # check queueing system
+    if [ "$QS" == "PBS" ]; then
+        echo Found Portable Batch System
+    elif [ "$QS" == "SGE" ]; then
+        echo Found Sun Grid Engine
+    elif [ "$QS" == "SLURM" ]; then
+        echo Found SLURM
+        if [ "$LOG_DIR" == "/dev/null" ]; then
+            echo Error: LOG_DIR=/dev/null not supported by SLURM.
+            exit
+        fi
+    else
+        echo Error: No supported queueing system was found.
+        exit
+    fi
+
+    # get the output directory
+    if [ "$HOST" == "npcfsa" ]; then
+        if [ "$OUT_DIR" == "" ]; then
+            echo Error: OUT_DIR variable not set.
+            exit
+        fi
+    else
+        OUT_DIR=`grep '^Directory: ' $acqu/$CB_OFFLINE | cut -c11-256 | sed 's/ //g'`
+    fi
+
+    # loop over files
+    for i in `cat $2 | grep -v '^#'` ; do
+        submit $i
+    done
+
+else
+
+    echo
+    echo "ARSubmitMC"
+    echo
+    echo "Usage: ARSubmitMC CONFIG FILELIST   submit MC files listed in FILELIST using"
+    echo "                                    the configuration in CONFIG"
+    echo
+
+fi
+

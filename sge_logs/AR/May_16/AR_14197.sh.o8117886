@@ -1,0 +1,1233 @@
+
+You are using [1m0.47 GB[0m of your assigned [1m10.00 GB[0m. [1m9.53 GB[0m are free.
+
+  *******************************************
+  *                                         *
+  *        W E L C O M E  to  R O O T       *
+  *                                         *
+  *   Version   5.34/32      23 June 2015   *
+  *                                         *
+  *  You are welcome to visit our Web site  *
+  *          http://root.cern.ch            *
+  *                                         *
+  *******************************************
+
+ROOT 5.34/32 (v5-34-32@v5-34-32, Jun 23 2015, 17:58:02 on linuxx8664gcc)
+
+CINT/ROOT C/C++ Interpreter version 5.18.00, July 2, 2010
+Type ? for help. Commands must be C++ statements.
+Enclose multiple statements between { }.
+
+
+
+  ****** Acqu - Root Analyser ******
+
+          Version: 4v6
+            Dated: 09.07.13
+   Linked to Root: 5.34/32
+
+
+   See .log files for all AcquRoot progress/error messages
+
+
+Data processing type: Raw  chosen
+
+ ROOT Tree name: RawEvent_AR_Save for I/O
+
+ Branch: RawEvent_Hits, size 32768 added to offline analysis
+
+ Branch: RawEvent_Scalers, size 4192 added to offline analysis
+
+ Branch: Mk1_Header, size 120000 added to offline analysis
+
+ ROOT output stored in directory: /usr/panther_scratch0/mullen/AR/May_16/
+
+Analysis Class: TA2UserAnalysis chosen
+ Analysis setup from file data/May_16/Analysis.dat
+
+ Data Server setup from file data/May_16/CBServer.Offline
+
+ TA2DataServer: Starting configuration from file
+ TA2FileSource: Starting data file read
+
+ TA2Analysis analysis linked to Acqu-to-Root interface
+
+ TA2UserAnalysis analysis loaded into TAcquRoot Acqu-to-Root interface
+ TA2DataServer data server loaded into TAcquRoot Acqu-to-Root interface
+ 29320 ADC channels and 8706 Scaler channels in data.
+
+ Defining Event-Marker Index 400 in ADC lists
+ TA2UserAnalysis:  Running PostInitialise before setting up Multi-Hit ADC's
+
+ Child class TA2Tagger linked to TA2UserAnalysis parent
+ Child class TA2Ladder linked to TA2Tagger parent
+ PDG default: particles all photons, PDG index 22
+ Child class TA2MyCrystalBall linked to TA2UserAnalysis parent
+ Child class TA2MyCalArray linked to TA2MyCrystalBall parent
+ TA2MyCalArray: Cluster algorithm: Traditional
+ TA2MyCalArray: MC time resolution: 0.000000 ns
+ TA2MyCalArray: MC time offset: 0.000000 ns
+ Child class TA2MyPlasticPID linked to TA2MyCrystalBall parent
+ Child class TA2MyTAPS linked to TA2UserAnalysis parent
+ Child class TA2MyTAPS_BaF2PWO linked to TA2MyTAPS parent
+ TA2MyTAPS_BaF2PWO: Cluster algorithm: TAPS
+ TA2MyTAPS_BaF2PWO: MC time resolution: 0.000000 ns
+ TA2MyTAPS_BaF2PWO: MC time offset: 0.000000 ns
+ TA2MyTAPS_BaF2PWO: MC energy smearing parameters: 0.022000 1.100000
+ Child class TA2MyPlasticVETO linked to TA2MyTAPS parent
+ TA2UserAnalysis:  Reconstruction procedure enabled in event loop
+
+
+
+  ****** GENERAL INFORMATION ******
+
+   ACQU data name      : scratch/CBTaggTAPS_14197.dat
+   Analysis type       : Online
+   Analysis input      : Raw data
+   Run number          : 14197
+   Analysis class      : TA2UserAnalysis
+   Analysis setup      : data/May_16/Analysis.dat
+   Physics class       : TA2MyCaLib
+   Physics name        : MyCaLib
+   Max ADC             : 29321
+   Max Scaler          : 8706
+
+
+
+
+  ****** PHYSICS ANALYSIS ******
+
+   Name       : MyCaLib
+   Class Name : TA2MyCaLib
+
+
+
+
+  ****** DETECTOR LIST ******
+
+   Loaded Detectors:
+
+   TAGG (TA2Tagger)
+     FPD (TA2Ladder)
+   CB (TA2MyCrystalBall)
+     NaI (TA2MyCalArray)
+     PID (TA2MyPlasticPID)
+   TAPS (TA2MyTAPS)
+     BaF2PWO (TA2MyTAPS_BaF2PWO)
+     VETO (TA2MyPlasticVETO)
+
+
+
+
+  ****** HARDWARE TRIGGER ******
+
+   L1 Bits
+   CB sum      : 0x8000 (read from L2 pattern)
+   TAPS OR     : 0x0040
+   TAPS M2     : 0x0080
+   Pulser      : 0x4000
+   TAPS Pulser : 0x8000
+
+   L2 Bits
+   M1(+)       : 0x0200
+   M2(+)       : 0x0400
+   M3(+)       : 0x0800
+   M4+         : 0x1000
+
+
+
+  ****** SOFTWARE TRIGGER ******
+
+   Total multiplicity        : 0 or more (TAPS included)
+   TAPS alone multiplicity   : 0 or more
+   CB sum                    :   0.00 MeV (No CDF for MC)
+   CB NaI mean gain          : 0.080472 MeV/Ch
+   CB segment LED threshold  :   0.00 MeV
+   TAPS LED1 threshold       :   0.00 MeV
+   TAPS LED2 threshold       :   0.00 MeV
+
+
+
+  0 Bad tagger channel(s): 
+
+  0 Bad CB cluster center(s): 
+
+  0 Bad TAPS cluster center(s): 
+
+  BaF2 CFD Pattern 'TAPSCFDPattern' found at index 0
+  BaF2 LED1 Pattern 'TAPSLED1Pattern' found at index 1
+  BaF2 LED2 Pattern 'TAPSLED2Pattern' found at index 2
+  Veto LED Pattern 'TAPSVetoPattern' found at index 3
+
+
+  ****** ENABLED CALIBRATION HISTOGRAMS ******
+
+   6 calibration(s) enabled.
+
+   - CB energy
+   - CB time
+   - TAPS energy
+   - TAPS time
+   - veto-crystal correlation
+   - Tagger time
+
+ TA2UserAnalysis:  Physics procedure enabled in event loop
+ TA2UserAnalysis periodic command: PeriodMacro()   Interval set to 100000
+ TA2UserAnalysis End-of-Run command: MyFinishMacro() 
+End of Run procedures enabled for TA2UserAnalysis
+
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 0
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 1
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 2
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 3
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 4
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 5
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 6
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 7
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 8
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 9
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 10
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 11
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 12
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 13
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 14
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 15
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 16
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 17
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 18
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 19
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 20
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10060 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10061 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10070 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10071 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10080 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10081 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10090 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10091 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 410 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 411 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 412 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 420 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 421 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 422 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 430 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 431 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 432 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 440 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 441 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 442 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 450 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 451 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 452 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 460 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 461 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 462 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 470 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 471 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 472 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 480 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 481 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 482 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 490 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 491 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 492 in DAQ event 21
+ TA2UserAnalysis:  Error found undefined ADC 10010 in DAQ event 22
+ TA2UserAnalysis:  Error found undefined ADC 10011 in DAQ event 22
+ TA2UserAnalysis:  Error found undefined ADC 10020 in DAQ event 22
+ TA2UserAnalysis:  Error found undefined ADC 10021 in DAQ event 22
+ TA2UserAnalysis:  Error found undefined ADC 10030 in DAQ event 22
+ TA2UserAnalysis:  Error found undefined ADC 10031 in DAQ event 22
+ TA2UserAnalysis:  Error found undefined ADC 10040 in DAQ event 22
+ TA2UserAnalysis:  Error found undefined ADC 10041 in DAQ event 22
+ TA2UserAnalysis:  Error found undefined ADC 10050 in DAQ event 22
+ TA2UserAnalysis:  Error found undefined ADC 10051 in DAQ event 22
+ Reached limit on printed errors (1000) in class TA2UserAnalysis
+ Some frequently occuring messages will be suppressed from now on.
+Events: 100000      Events Accepted: 99999
+Events: 200000      Events Accepted: 199999
+Events: 300000      Events Accepted: 299999
+Events: 400000      Events Accepted: 399999
+Events: 500000      Events Accepted: 499999
+Events: 600000      Events Accepted: 599999
+Events: 700000      Events Accepted: 699999
+Events: 800000      Events Accepted: 799999
+Events: 900000      Events Accepted: 899999
+Events: 1000000      Events Accepted: 999999
+Events: 1100000      Events Accepted: 1099999
+Events: 1200000      Events Accepted: 1199999
+Events: 1300000      Events Accepted: 1299999
+Events: 1400000      Events Accepted: 1399999
+Events: 1500000      Events Accepted: 1499999
+Events: 1600000      Events Accepted: 1599999
+Events: 1700000      Events Accepted: 1699999
+Events: 1800000      Events Accepted: 1799999
+Events: 1900000      Events Accepted: 1899999
+Events: 2000000      Events Accepted: 1999999
+Events: 2100000      Events Accepted: 2099999
+Events: 2200000      Events Accepted: 2199999
+Events: 2300000      Events Accepted: 2299999
+Events: 2400000      Events Accepted: 2399999
+Events: 2500000      Events Accepted: 2499999
+Events: 2600000      Events Accepted: 2599999
+Events: 2700000      Events Accepted: 2699999
+Events: 2800000      Events Accepted: 2799999
+Events: 2900000      Events Accepted: 2899999
+Events: 3000000      Events Accepted: 2999999
+Events: 3100000      Events Accepted: 3099999
+Events: 3200000      Events Accepted: 3199999
+Events: 3300000      Events Accepted: 3299999
+Events: 3400000      Events Accepted: 3399999
+Events: 3500000      Events Accepted: 3499999
+Events: 3600000      Events Accepted: 3599999
+Events: 3700000      Events Accepted: 3699999
+Events: 3800000      Events Accepted: 3799999
+Events: 3900000      Events Accepted: 3899999
+Events: 4000000      Events Accepted: 3999999
+Events: 4100000      Events Accepted: 4099999
+Events: 4200000      Events Accepted: 4199999
+Events: 4300000      Events Accepted: 4299999
+TA2FileSource: read 22476 records from file /usr/caracal_scratch0/data/A2/D-Butanol/May_16/CBTaggTAPS_14197.dat.xz
+ TA2FileSource: Completed list of data files for analysis.
+
+Events: 4400000      Events Accepted: 4399999
+ TA2DataServer: End of run detected
+ TA2DataServer: Shutdown Message received
+ End file scratch/CBTaggTAPS_14197.dat, 4465416 events sorted, last event #4465415
+
+End of file: Executing MyFinishMacro ...
+Saved all histograms to /usr/panther_scratch0/mullen/AR/May_16/ARHistograms_CBTaggTAPS_14197.root

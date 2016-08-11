@@ -1,0 +1,72 @@
+ADC20018 run 13416 -> no first peak visible so fitted to the start of second peak.
+ADC20018 run 13466 -> no first peak visible so fitted to the start of second peak.
+ADC20018 run 13502 -> no first peak visible so fitted to the start of second peak.
+ADC20018 run 13558 -> no data presented in the graph 
+ADC20018 run 13559 -> no data presented in the graph 
+ADC20018 run 13560 ->  no first peak visible so fitted to the start of second peak.
+ADC20018 run 13561 ->  no first peak visible so fitted to the start of second peak.
+ADC20018 run 13562 ->  no data presented but this one says it has 5 entries and has a fit
+ADC20018 run 13564 ->  Shit fit
+ADC20018 run 13579 ->  Shit fit
+ADC20018 run 13580 ->   Fit not even on graph
+ADC20018 run 13588 ->   Fit far down the second peak so crap.
+ADC20018 run 13590 ->   Fit far down the second peak so crap.
+ADC20018 run 13606 ->  no first peak visible so fitted to the start of second peak.
+
+ADC20018 run 13647 -> no data presented in the graph 
+
+There are too many to through them all. From now on I will just select the recurring runs across ADCs that are bad fits, no data etc.
+
+The following two are present across almost all ADCs
+The first one is run 13558
+13559 both no data whatsoever
+
+
+The following three are present across almost all ADCs
+13645 not present 
+13646 not present
+13647 no data
+
+13502: slight bump up in few, bad fit no pedestal peak visible.
+
+13416: bad fit 
+
+The following two are present across almost all ADCs
+13561: only approx 20 data points(weird fit as result)
+13562: No fit present too low data
+
+
+
+13466 appeared in a few after overview 158; just bad fits
+
+
+In the later overview fits there appears to be an approximately 6 channel drift down towards 95
+
+
+ADC 231_23018 shows erratic behaviour; bad fits.
+Similar poor fits are shown for the next ten ADCs
+ADC 304_24018 shows erratic behaviour also.
+
+
+
+
+NOTE: ADC 067_20462 has a drop of 30 channels average (Ask Dom)
+ADC 085_21018 has erratic behaviour with 20 channel spread (Ask Dom) VERY bad fits across all.
+ADC 087_21038 has a drop of 80 channels average. Almost none of them have fits.
+
+
+The 29 ones are diff crystal types.
+ADC 146_29048 has drop of 40 channels average.
+ADC 147_29054 has drop of 50 channels average. Extremelyerratic
+ADC 148_29050 has drop of 80 channels average.
+ADC 149_29052 has drop of 10 channels average.
+ADC 150_29056 has drop of 40 channels average.
+ADC 151_29062 has drop of 40 channels average.
+ADC 152_29058 has drop of 40 channels average.
+ADC 153_29060 has drop of 40 channels average.
+ADC 154_29060 has drop of 40 channels average.
+ADC 155_29060 has drop of 40 channels average.
+ADC 156_29060 has drop of 40 channels average.
+ADC 157_29060 has drop of 40 channels average.
+
+

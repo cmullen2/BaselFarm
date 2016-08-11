@@ -1,0 +1,13 @@
+Info in <ReadCaLibData>: Registered 30 data definitions
+Info in <ReadCaLibTypes>: Registered 21 type definitions
+Info in <ReadConfigFile>: Reading configuration file '/usr/users/witth/AcquRoot/CaLib/config/config.cfg'
+Info in <TCMySQLManager>: Connected to the database 'calib_curr' on 'calib_rw@phys-jaguar' using CaLib 0.1.5
+Info in <ReadParameters>: Read 24 parameters of 'PID ADC pedestal' from the database
+Info in <ReadParameters>: Read 24 parameters of 'PID ADC pedestal' from the database
+Info in <ReadParameters>: Read 24 parameters of 'PID ADC pedestal' from the database
+Info in <ReadParameters>: Read 24 parameters of 'PID ADC pedestal' from the database
+Info in <ReadParameters>: Read 24 parameters of 'PID ADC pedestal' from the database
+Info in <ReadParameters>: Read 24 parameters of 'PID ADC pedestal' from the database
+Info in <ReadParameters>: Read 24 parameters of 'PID ADC pedestal' from the database
+Info in <ReadParameters>: Read 24 parameters of 'PID ADC pedestal' from the database
+Info in <DumpCalibrations>: Dumped 8 sets of 'PID ADC pedestal' of the calibration 'He3_Nov_08'

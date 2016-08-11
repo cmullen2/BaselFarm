@@ -1,0 +1,19 @@
+#########################################################################
+#                                                                       #
+# Tagger apparatus MC configuration file for the May 09 beamtime        #
+#                                                                       #
+#########################################################################
+
+##	NMR field       Beam Energy
+Magnet: 1.89601         1557.5
+##
+##	  Name          Class Name    	Setup file
+Detector: FPD           TA2Ladder       data/MC_May_09/LadderMC.dat
+##
+Reconstruct:
+Initialise:
+#
+#Display: 1D Nhit  	  20   0  20	-1
+#Display: 1D PhotonEnergy  200  0  1000	-1
+#Display 2D Ladder_Hits   352 0 352 -1 Micro_Hits 96 0 96 -1 
+#Display 2D Ladder_Doubles 352 0 352 -1 Micro_Doubles 96 0 96 -1

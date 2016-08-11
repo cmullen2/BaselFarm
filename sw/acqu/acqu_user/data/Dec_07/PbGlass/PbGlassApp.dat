@@ -1,0 +1,12 @@
+#########################################################################
+#                                                                       #
+# Pb glass apparatus configuration file for the December 07 beamtime    #
+#                                                                       #
+#########################################################################
+
+Detector:   PbGlassDet      TA2GenericDetector      data/Dec_07/PbGlass/PbGlassDet.dat
+
+#Reconstruct:
+Initialise:
+
+

@@ -1,0 +1,229 @@
+## SVN info: $Id$
+##
+##-----------------------------------------------------------------------
+## Info switch is off/on = 0/1
+##	Total	Energy?	Time?	Position?
+Size:   860     1       1       0
+##
+## Total # active layers in detector
+Number-Layers: 		6
+## # Chambers giving hit position
+Number-Chambers:	2
+##
+## Which layers belong to chambers 0,1,....
+## 2-chamber DAPHNE-style MWPC.....2 cathode + 1 anode per chamber
+## Chamber 0
+Layers-In-Chamber:	2	0	3
+## Chamber 1
+Layers-In-Chamber:	4	1	5
+##
+## Misc. parameters of the detector
+## In the TA2DaphneMWPC case...
+## MI max # intersect positions, MT max # tracks,
+## dPhiWIE max difference between strip & wire Phi (deg)
+## Rmax, Zmax, Zmin coordinate limits for valid track vertex (mm)
+## dMax12 max distance between intersections of chambers 1 & 2 for track reconstruction (mm)
+##			MI MT MV	dPhiWIE	Rmax Zmax Zmin	dMax12
+#Chamber-Parameter:	16 8  4		5.	700. 500. -500.	40.
+Chamber-Parameter:	16 8  4		5.	700. 500. -500.	60.
+##
+## Corrections of intersection coordinates:
+## dPhiEI(Zei,phi) = Phi0 + Phi1*Zei + Phi2*phi -- external strip layer rotation relative to internal strip layer (wire layer) [deg]
+## dZei = dPhiEI(Zei,phi)*Re	-- external strip layer z shif relative to internal strip layer (wire layer) [mm]
+## dPhi = dPhiEI(Zei,phi) + Phi	-- MWPC rotation as the whole [deg]
+## dX -- MWPC x-shift as the whole [mm]
+## dY -- MWPC y-shift as the whole [mm]
+## dZ  = dZ1 + dZ2*Zei -- MWPC z-shift as the whole [mm]
+##
+## MWPC 0	Phi0	Phi1	Phi2	Phi	dX	dY	dZ1	dZ2	dZ3	dZ4	dZ5	dZ6
+# Intersection:	0.	0.	0.	0.	0.	0.	0.	0.	0.	0.	0.	0.
+## MWPC 1	Phi0	Phi1	Phi2	Phi	dX	dY	dZ1	dZ2	dZ3	dZ4	dZ5	dZ6
+# Intersection:	0.	0.	0. 	0.	0.	0.	0.	0.	0.	0.	0.	0.
+##
+##
+## Detection efficiency
+# 	MWPC#	ParticleID	File name
+# DetEff:	0	9		CB/eff_100
+# DetEff:	1	9		CB/eff_100
+# DetEff:	0	14		CB/eff_100
+# DetEff:	1	14		CB/eff_100
+# DetEff:	0	8		CB/eff_100
+# DetEff:	1	8		CB/eff_100
+##
+## Resolution
+#		MWPC#	File name
+# SigmaPhi:	0	CB/sigmaPhi_Mwpc.dat
+# SigmaPhi:	1	CB/sigmaPhi_Mwpc.dat
+#
+# SigmaZ:		0	CB/sigmaZ_Mwpc.dat
+# SigmaZ:		1	CB/sigmaZ_Mwpc.dat
+##
+# ReadGeneratedKinematics:
+##
+## 1st Layer: Chamber 1 "plane" of wires. dist(mm), angles(deg), corr coefs
+## #wi:number of strips; mcl:max number clusters; cls:max cluster size;
+## rad: radius (mm); len: length (mm);
+##	  name		#wi	mcl	cls	rad	len
+Cyl-Wire: Wire1 	232	40	4	74	570
+##
+##
+## 2th Layer: Chamber 2 "plane" of wires.
+## #wi:number of strips; mcl:max number clusters; cls:max cluster size;
+## rad: radius (mm); len: length (mm);
+## phi0-2: quadratic z correction coeffs;
+##	  name		#wi	mcl	cls	rad	len
+Cyl-Wire: Wire2		296	40	4	94.5	570
+##
+##
+## 3rd Layer: Chamber 1 inner strips
+## #st:number of strips; mcl:max number clusters; cls:max cluster size;
+## rad: radius (mm); tgwc: tan helix angle?; pit: strip width
+##	   name	       #st	mcl	cls	rad	len	tgwc	pit
+Cyl-Strip: InnerStrip1	69	40	6	70	570	1.0	4.5
+##
+##
+## 4th Layer: Chamber 1 outer strips. dist(mm), angles(deg), corr coefs
+## #st:number of strips; mcl:max number clusters; cls:max cluster size;
+## rad: radius (mm); tgwc: tan helix angle?;
+##	   name	      #st mcl cls rad  len  tgwc  pit
+Cyl-Strip: OuterStrip1 77 40   6	  78.  570  1.    4.5
+##
+##
+## 5th Layer: Chamber 2 inner strips. dist(mm), angles(deg), corr coefs
+## #st:number of strips; mcl:max number clusters; cls:max cluster size;
+## rad: radius (mm); tgwc: tan helix angle?;
+##	   name	      #st mcl cls rad  len tgwc pit
+Cyl-Strip: InnerStrip2 89 40   6	  90.5 570 1.0  4.5
+##
+##
+## 6th Layer: Chamber 2 outer strips. dist(mm), angles(deg), corr coefs
+## #st:number of strips; mcl:max number clusters; cls:max cluster size;
+## rad: radius (mm); tgwc: tan helix angle?;
+##	   name	       #st mcl cls rad  len tgwc   pit
+Cyl-Strip: OuterStrip2 97  40   6   98.5 570  1.0   4.5
+##
+##
+## Do some further array initialisation BEFORE display specification
+Initialise:
+##
+# Data-Cut:  1D   TrackN	AND     data	2	2
+##
+##		N	Macro File		Macro Procedure
+# Period:		10	CylMwpcPeriodMacro.C	TestCylMwpc()
+##
+## Cut specification
+## NB 2D cuts, ie a general polygon on the X-Y plane not yet implemented
+## Simple rectangle cuts may be made by an AND of X and Y conditions
+##         1/2D Name     		Link   Scope          Low/High Limits
+# Data-Cut: 1D   Wire1NClust		AND     data		2   2
+# Data-Cut: 1D   Wire2NClust		AND     data		2   2
+# Data-Cut: 1D   InnerStrip1NClust	AND     data		2   2
+# Data-Cut: 1D   InnerStrip2NClust	AND     data		2   2
+# Data-Cut: 1D   OuterStrip1NClust	AND     data		2   2
+# Data-Cut: 1D   OuterStrip2NClust	AND     data		2   2
+# Data-Cut: 1D   VertexesN	AND     data		1 1
+##
+##	Histograming of basic detector stuff
+##
+## Overall detector hits
+#Display:	1D	Nhits  			860 	0 	860
+#Display:	1D	Hits			860	0	860
+### Hits in each layer
+#Display:	1D	Wire1NHits  		232	0	232
+#Display:	1D	Wire2NHits  		296	0	296
+#Display:	1D	InnerStrip1NHits	69	0	69
+#Display:	1D	OuterStrip1NHits	77	0	77
+#Display:	1D	InnerStrip2NHits	89	0	89
+#Display:	1D	OuterStrip2NHits	97	0	97
+### Layer Hit frequency distributions
+#Display:	1D	Wire1Hits		232	0	232
+#Display:	1D	Wire2Hits		296	0	296
+#Display:	1D	InnerStrip1Hits		69	0	69
+#Display:	1D	OuterStrip1Hits		77	0	77
+#Display:	1D	InnerStrip2Hits		89	0	89
+#Display:	1D	OuterStrip2Hits		97	0	97
+## Layer hit cluster C-of-G
+#Display:	1D	Wire1CGClust		70	0	6.28
+#Display:	1D	Wire2CGClust		70	0	6.28
+#Display:	1D	InnerStrip1CGClust	69	0	1
+#Display:	1D	OuterStrip1CGClust	77	0	1
+#Display:	1D	InnerStrip2CGClust	89	0	1
+#Display:	1D	OuterStrip2CGClust	97	0	1
+## Layer hit cluster length
+#Display:	1D	Wire1LenClust		10	0	10
+#Display:	1D	Wire2LenClust		10	0	10
+#Display:	1D	InnerStrip1LenClust	20	0	20
+#Display:	1D	OuterStrip1LenClust	20	0	20
+#Display:	1D	InnerStrip2LenClust	20	0	20
+#Display:	1D	OuterStrip2LenClust	20	0	20
+## Layer hit cluster start
+#Display:	1D	Wire1StClust		232	0	232
+#Display:	1D	Wire2StClust		296	0	296
+#Display:	1D	InnerStrip1StClust	69	0	69
+#Display:	1D	OuterStrip1StClust	77	0	77
+#Display:	1D	InnerStrip2StClust	89	0	89
+#Display:	1D	OuterStrip2StClust	97	0	97
+## Layer # hit clusters
+#Display:	1D	Wire1NClust		10	0	10
+#Display:	1D	Wire2NClust		10	0	10
+#Display:	1D	InnerStrip1NClust	10	0	10
+#Display:	1D	OuterStrip1NClust	10	0	10
+#Display:	1D	InnerStrip2NClust	10	0	10
+#Display:	1D	OuterStrip2NClust	10	0	10
+#
+## Intersections
+#Display:	1D	IntsN1		20	0	20
+#Display:	1D	IntsN2		20	0	20
+#Display:	1D	IntsZ1		100	-350	350
+#Display:	1D	IntsZ2		100	-350	350
+#Display:	1D	IntsPhi1	180	0	360.
+#Display:	1D	IntsPhi2	180	0	360.
+#Display:	1D	IntsDphiWS1	180	-10.	10.
+#Display:	2D	IntsZ1		100	-300	300	-1	IntsDphiWS1	100	-10.	10.	-1	
+#Display:	2D	CGclW1		232	0	232	-1	IntsDphiWS1	100	-10.	10.	-1
+#Display:	2D	CGclI1		69	0	69	-1	IntsDphiWS1	100	-10.	10.	-1
+#Display:	2D	CGclE1		77	0	77	-1	IntsDphiWS1	100	-10.	10.	-1
+#Display:	1D	IntsDphiWS2	180	-10.	10.
+#Display:	2D	IntsZ2		100	-300	300	-1	IntsDphiWS2	100	-10.	10.	-1
+#Display:	2D	CGclW2		296	0	296	-1	IntsDphiWS2	100	-10.	10.	-1
+#Display:	2D	CGclI2		89	0	89	-1	IntsDphiWS2	100	-10.	10.	-1
+#Display:	2D	CGclE2		97	0	97	-1	IntsDphiWS2	100	-10.	10.	-1
+#Display:	1D	IntsType1	8	0	8
+#Display:	1D	IntsType2	8	0	8
+#Display:	1D	AclIE1		100	0	1000
+#Display:	1D	AclIE2		100	0	1000
+#
+## Tracks
+#Display:	1D	TrackN		10	0	10
+#Display:	1D	TrackNTrueBest	10	0	10
+#Display:	1D	TrackType	64	0	64
+#Display:	1D	TrackMag	100	0	100
+#Display:	1D	TrackTheta	180	0	180
+#Display:	1D	TrackPhi	180	0	360
+#Display:	1D	TrackDPhiInters	100	-50	50
+#Display:	1D	TrackDZInters	100	-200	200
+#Display:	2D	TrackDPhiInters	100	-50	50	-1	TrackDZInters	100	-200	200	-1
+#Display:	1D	PsVertexX	40	-40	40
+#Display:	1D	PsVertexY	40	-40	40
+#Display:	1D	PsVertexZ	500	-250	250
+#Display:	1D	PsVertexR	100	0	74
+#Display:	2D	PsVertexX	40	-40	40	-1	PsVertexY	40	-40	40	-1
+#Display:	2D	PsVertexZ	500	-250	250	-1	PsVertexX	40	-40	40	-1	
+#Display:	2D	PsVertexZ	500	-250	250	-1	PsVertexY	40	-40	40	-1	
+#Display:	1D	Etrack		200	0	2000
+#
+## Vertexes
+#Display:	1D	VertexN		5	0	5
+#Display:	1D	VertexX		40	-40	40
+#Display:	1D	VertexY		40	-40	40
+#Display:	1D	VertexZ		500	-250	250
+#Display:	2D	VertexX		40	-40	40	-1	VertexY		40	-40	40	-1
+#Display:	2D	VertexZ		500	-250	250	-1	VertexX		40	-40	40	-1	
+#Display:	2D	VertexZ		500	-250	250	-1	VertexY		40	-40	40	-1
+#Display:	1D	VertexR		70	0	70
+#Display:	1D	TrackDist	100	0	20
+#
+## Simulation
+#Display:	1D	VertexSimX	80	-40	40
+#Display:	1D	VertexSimY	80	-40	40
+#Display:	1D	VertexSimZ	500	-250	250

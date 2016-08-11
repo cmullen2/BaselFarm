@@ -1,0 +1,160 @@
+#!/bin/bash
+
+################################################################################
+#                                                                              #
+# OAnaSubmit                                                                   #
+#                                                                              #
+# Author: Dominik Werthmueller, 2015                                           #
+#                                                                              #
+################################################################################
+
+
+################################################################################
+# Global variables                                                             #
+################################################################################
+
+QS=""
+HOST=`hostname -s`
+
+################################################################################
+# Function: Look for a queueing system                                         #
+################################################################################
+
+function searchQS {
+    # Portable Batch System
+    PBS_NODES=`command -v pbsnodes`
+    if [ "$PBS_NODES" != "" ]; then
+        echo PBS
+    # Sun Grid Engine
+    elif [ -n "$SGE_ROOT" ]; then
+        echo SGE
+    fi
+}
+
+################################################################################
+# Function: Submit a job                                                       #
+################################################################################
+
+function submit {
+    # get data file
+    DATA_FILE_FULL=`ls $1 2> /dev/null`
+
+    # check if data file exists
+    if [ "$DATA_FILE_FULL" != "" ]; then
+        
+        # get data file and directory
+        DATA_FILE=`ls $1 | xargs basename`
+        FILE_INDEX=`echo $DATA_FILE | sed 's/\.root$//g' | sed 's/.*_//g'`
+
+        # skip analysis if file already exists
+        OUT_FILE=$OUT_DIR/analysis_$FILE_INDEX".root"
+        OUT_FILE_EV=`eval ls $OUT_FILE 2> /dev/null`
+        if [ -e "$OUT_FILE_EV" ]; then
+            echo Skipping $DATA_FILE
+            return
+        fi
+
+        # create the job file
+        JF=/tmp/OAna_$FILE_INDEX.sh
+        echo "#!/bin/sh" > $JF
+
+        # add queueing system specific header
+        # Portable Batch System
+        if [ "$QS" == "PBS" ]; then
+            echo "#PBS -S /bin/bash" >> $JF
+            echo "#PBS -N OAna_$FILE_INDEX" >> $JF
+            echo "#PBS -j oe" >> $JF
+            echo "#PBS -o $LOG_DIR" >> $JF
+            echo "#PBS -V" >> $JF
+            echo "#PBS -l walltime=24:00:00" >> $JF
+        # Sun Grid Engine
+        elif [ "$QS" == "SGE" ]; then
+            echo "#$ -S /bin/bash" >> $JF
+            echo "#$ -e $LOG_DIR" >> $JF
+            echo "#$ -o $LOG_DIR" >> $JF
+        fi
+
+        # pre-job stuff
+        if [ "$HOST" == "npcfsa" ]; then
+            echo "scp -c arcfour npcfsa:$DATA_FILE_FULL /scratch/werthm" >> $JF
+        fi
+
+        # complete job file
+        if [ "$HOST" == "npcfsa" ]; then
+            echo "OAna --data -b -i /scratch/werthm/$DATA_FILE -o /scratch/werthm/analysis_$FILE_INDEX".root" $OANA_CONFIG" >> $JF
+        else
+            echo "OAna --data -b -i $DATA_FILE_FULL -o $OUT_FILE $OANA_CONFIG" >> $JF
+        fi
+
+        # post-job stuff
+        if [ "$HOST" == "npcfsa" ]; then
+            echo "scp -c arcfour /scratch/werthm/analysis_$FILE_INDEX".root" npcfsa:$OUT_DIR" >> $JF
+            echo "rm -f /scratch/werthm/$DATA_FILE" >> $JF
+            echo "rm -f /scratch/werthm/analysis_$FILE_INDEX".root"" >> $JF
+        fi
+
+        # submit the job 
+        echo Submitting $DATA_FILE
+        qsub $SUBMIT_ARGS $JF
+        
+        # delete the job file
+        rm $JF
+    else
+        echo Data file $1 not found!
+        return
+    fi
+}
+
+################################################################################
+# Main function                                                                #
+################################################################################
+
+# check arguments 
+if [ $# -eq 2 ]; then
+    
+    # read the configuration
+    source $1
+    
+    # check variables
+    if [ "$OANA_CONFIG" == "" ]; then
+        echo Error: OANA_CONFIG variable not set.
+        exit
+    fi
+    if [ "$OUT_DIR" == "" ]; then
+        echo Error: OUT_DIR variable not set.
+        exit
+    fi
+    if [ "$LOG_DIR" == "" ]; then
+        echo Error: LOG_DIR variable not set.
+        exit
+    fi
+
+    # search queueing system
+    QS=$(searchQS)
+
+    # check queueing system
+    if [ "$QS" == "PBS" ]; then
+        echo Found Portable Batch System
+    elif [ "$QS" == "SGE" ]; then
+        echo Found Sun Grid Engine
+    else
+        echo Error: No supported queueing system was found.
+        exit
+    fi
+
+    # loop over files
+    for i in `cat $2 | grep -v '^#'` ; do
+        submit $i
+    done
+
+else
+    
+    echo
+    echo "OAnaSubmit"
+    echo
+    echo "Usage: OAnaSubmit CONFIG FILELIST   submit files listed in FILELIST using"
+    echo "                                    the configuration in CONFIG"
+    echo
+
+fi
+

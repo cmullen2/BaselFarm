@@ -1,0 +1,263 @@
+#!/bin/bash
+
+################################################################################
+#                                                                              #
+# ARSubmit                                                                     #
+#                                                                              #
+# Author: Dominik Werthmueller, 2010-2016                                      #
+#                                                                              #
+################################################################################
+
+
+################################################################################
+# Global variables                                                             #
+################################################################################
+
+OUT_DIR=""
+SUBN=0
+QS=""
+HOST=`hostname -s`
+
+################################################################################
+# Function: Look for a queueing system                                         #
+################################################################################
+
+function searchQS {
+    PBS_NODES=`command -v pbsnodes`
+    SLURM=`command -v sinfo`
+    # Portable Batch System
+    if [ "$PBS_NODES" != "" ]; then
+        echo PBS
+    # Sun Grid Engine
+    elif [ -n "$SGE_ROOT" ]; then
+        echo SGE
+    # SLURM
+    elif [ "$SLURM" != "" ]; then
+        echo SLURM
+    fi
+}
+
+################################################################################
+# Function: Submit a job                                                       #
+################################################################################
+
+function submit {
+    # set standard data location/submission args as default
+    DATA_DIR_RND=$DATA_DIR
+    SUBMIT_ARGS_RND=$SUBMIT_ARGS
+
+    # every second run
+    R=`echo $SUBN % 2 | bc`
+
+    # check if alternative data location was specified
+    if [ "$DATA_DIR_ALT" != "" ]; then
+
+        # use alternative data location for every second run
+        if [ $R == 1 ]; then
+            DATA_DIR_RND=$DATA_DIR_ALT
+        fi
+    fi
+
+    # check if alternative submission arguments were specified
+    if [ "$SUBMIT_ARGS_ALT" != "" ]; then
+
+        # use alternative arguments for every second run
+        if [ $R == 1 ]; then
+            SUBMIT_ARGS_RND=$SUBMIT_ARGS_ALT
+        fi
+    fi
+
+    # get data file (.dat/.dat.gz/.dat.xz)
+    DATA_FILE=`ls $DATA_DIR_RND/$RUN_PREFIX'_'$1.dat{'',.gz,.xz} 2> /dev/null`
+
+    # check if data file exists
+    if [ "$DATA_FILE" != "" ]; then
+
+        # base name of datafile
+        DATA_FILE_BASE=`basename $DATA_FILE`
+
+        # skip analysis if file already exists
+        OUT_FILE=`eval ls $OUT_DIR/ARHistograms_"$RUN_PREFIX"_$1.root 2> /dev/null`
+        if [ -e "$OUT_FILE" ]; then
+            echo Skipping run $1
+            return
+        fi
+
+        # create the job file
+        JF=/tmp/AR_$1.sh
+        echo "#!/bin/sh" > $JF
+
+        # add queueing system specific header
+        # Portable Batch System
+        if [ "$QS" == "PBS" ]; then
+            echo "#PBS -S /bin/bash" >> $JF
+            echo "#PBS -N AR_$1" >> $JF
+            echo "#PBS -j oe" >> $JF
+            echo "#PBS -o $LOG_DIR" >> $JF
+            echo "#PBS -V" >> $JF
+            echo "#PBS -l ncpus=2" >> $JF
+            echo "#PBS -l walltime=24:00:00" >> $JF
+        # Sun Grid Engine
+        elif [ "$QS" == "SGE" ]; then
+            echo "#$ -S /bin/bash" >> $JF
+            echo "#$ -e $LOG_DIR" >> $JF
+            echo "#$ -o $LOG_DIR" >> $JF
+            echo "#$ -pe par_ana 2" >> $JF
+        # SLURM
+        elif [ "$QS" == "SLURM" ]; then
+            echo "#!/bin/bash" >> $JF
+            echo "#SBATCH -J AR_$1" >> $JF
+            echo "#SBATCH -o $LOG_DIR/AR_"$1"_%N.%j.out" >> $JF
+            #echo "#SBATCH -n 2" >> $JF
+            echo "#SBATCH --time=100:00:00" >> $JF
+        fi
+
+        # pre-job stuff
+        if [ "$HOST" == "nplse" ]; then
+            #echo "bbcp -v -z -s 2 nplse:$DATA_FILE /scratch/werthm" >> $JF
+            #echo "scp -c arcfour nplse:$DATA_FILE /scratch/werthm" >> $JF
+            echo "cp $DATA_FILE /scratch/werthm" >> $JF
+        #elif [[ $HOST == phys* ]]; then
+        #    echo "cp $DATA_FILE /scratch/werthm" >> $JF
+        fi
+
+        # complete job file
+        echo "cd $acqu" >> $JF
+        if [ "$HOST" == "nplse" ]; then
+            echo "AcquRoot $CB_OFFLINE --batch --nolog --datafile /scratch/werthm/$DATA_FILE_BASE" >> $JF
+        #elif [[ $HOST == phys* ]]; then
+        #    echo "AcquRoot $CB_OFFLINE --batch --nolog --datafile /scratch/werthm/$DATA_FILE_BASE" >> $JF
+        else
+            echo "AcquRoot $CB_OFFLINE --batch --nolog --datafile $DATA_FILE" >> $JF
+        fi
+
+        # post-job stuff
+        if [ "$HOST" == "nplse" ]; then
+            #echo "scp -c arcfour /scratch/werthm/ARHistograms_"$RUN_PREFIX"_$1.root nplse:$OUT_DIR" >> $JF
+            echo "cp /scratch/werthm/ARHistograms_"$RUN_PREFIX"_$1.root $OUT_DIR" >> $JF
+            echo "rm -f /scratch/werthm/$DATA_FILE_BASE" >> $JF
+            echo "rm -f /scratch/werthm/ARHistograms_"$RUN_PREFIX"_$1.root" >> $JF
+        #elif [[ $HOST == phys* ]]; then
+        #    echo "cp /scratch/werthm/ARHistograms_"$RUN_PREFIX"_$1.root $OUT_DIR" >> $JF
+        #    echo "rm -f /scratch/werthm/$DATA_FILE_BASE" >> $JF
+        #    echo "rm -f /scratch/werthm/ARHistograms_"$RUN_PREFIX"_$1.root" >> $JF
+        else
+            echo "cp /scratch/werthm/ARHistograms_"$RUN_PREFIX"_$1.root $OUT_DIR" >> $JF
+            echo "rm -f /scratch/werthm/ARHistograms_"$RUN_PREFIX"_$1.root" >> $JF
+        fi
+
+        # submit the job
+        echo Submitting run $1 using data location $DATA_DIR_RND
+        if [ "$QS" == "SLURM" ]; then
+            sbatch $JF > /dev/null
+        else
+            qsub $SUBMIT_ARGS_RND $JF > /dev/null
+        fi
+
+        # delete the job file
+        rm $JF
+
+        # increment submit counter
+        SUBN=`echo $SUBN + 1 | bc`
+
+    else
+        echo Data file for run $1 not found in $DATA_DIR_RND!
+        return
+    fi
+}
+
+################################################################################
+# Main function                                                                #
+################################################################################
+
+# check arguments
+if [ $# -eq 2 ]; then
+
+    # read the configuration
+    source $1
+
+    # check variables
+    if [ "$DATA_DIR" == "" ]; then
+        echo Error: DATA_DIR variable not set.
+        exit
+    fi
+    if [ "$RUN_PREFIX" == "" ]; then
+        echo Error: RUN_PREFIX variable not set.
+        exit
+    fi
+    if [ "$CB_OFFLINE" == "" ]; then
+        echo Error: CB_OFFLINE variable not set.
+        exit
+    fi
+    if [ "$LOG_DIR" == "" ]; then
+        echo Error: LOG_DIR variable not set.
+        exit
+    fi
+    if [ "$OUT_DIR" == "" ]; then
+        echo Error: OUT_DIR variable not set.
+        exit
+    fi
+
+    # search queueing system
+    QS=$(searchQS)
+
+    # check queueing system
+    if [ "$QS" == "PBS" ]; then
+        echo Found Portable Batch System
+    elif [ "$QS" == "SGE" ]; then
+        echo Found Sun Grid Engine
+    elif [ "$QS" == "SLURM" ]; then
+        echo Found SLURM
+        if [ "$LOG_DIR" == "/dev/null" ]; then
+            echo Error: LOG_DIR=/dev/null not supported by SLURM.
+            exit
+        fi
+    else
+        echo Error: No supported queueing system was found.
+        exit
+    fi
+
+    # prepare run list
+    if [ "$RUN_REVERSE" == "ON" ]; then
+        RUNS=`cat $2 | grep -v '^#' | sort -r`
+    else
+        RUNS=`cat $2 | grep -v '^#'`
+    fi
+
+    # loop over runs
+    for i in $RUNS ; do
+
+        # check for run omitting
+        if [ "$RUN_MOD_OMIT" != "" ]; then
+            MRES=`echo $i % $RUN_MOD_OMIT | bc`
+            if [ $MRES != 0 ]; then
+                echo Omitting run $i
+                continue
+            fi
+        fi
+
+        # submit run
+        SUBNB=$SUBN
+        submit $i
+
+        # add some delay
+        if [ "$HOST" == "nplse" ]; then
+            if [ $SUBN -gt $SUBNB ]; then
+                if [ $SUBN -lt 108 ]; then
+                    sleep 30
+                fi
+            fi
+        fi
+    done
+
+else
+
+    echo
+    echo "ARSubmit"
+    echo
+    echo "Usage: ARSubmit CONFIG RUNLIST      submit runs listed in RUNLIST using"
+    echo "                                    the configuration in CONFIG"
+    echo
+
+fi
+

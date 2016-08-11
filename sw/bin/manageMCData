@@ -1,0 +1,166 @@
+#!/usr/bin/python
+
+import sys
+import argparse
+import os
+import subprocess
+import re
+import glob
+
+################################################################################
+def get_beamtime():
+    "Extract the beamtime from the parent directory name"
+
+    # try to extract beamtime
+    par_dir = os.path.basename(os.path.abspath(os.pardir))
+    par_dir_tok = re.match("MC_(.*)", par_dir)
+    if par_dir_tok is None:
+        return None
+    else:
+        return par_dir_tok.group(1)
+
+################################################################################
+def list_sets(beamtime):
+    "Lists all MC data sets of the beamtime"
+
+    # get home directory
+    home = os.path.expanduser("~")
+
+    # get data sets
+    data = sorted(glob.glob(home + "/loc/MC/" + beamtime + "/*"))
+
+    # print data sets
+    print "\nAvailable datasets:\n"
+    for i in data:
+        data_set = os.path.basename(i)
+        print " ", data_set
+    print ""
+
+    return
+
+################################################################################
+def list_files(beamtime, s, print_out=True):
+    "Lists and returns all files of a dataset of a beamtime"
+
+    # get home directory
+    home = os.path.expanduser("~")
+
+    # get files
+    data = sorted(glob.glob(home + "/loc/MC/" + beamtime + "/" + s + "/*.root"))
+    if data is None:
+        return None
+
+    # show files
+    out = []
+    for i in data:
+        tok = re.match("(.*_[0-9]{4}.root)", i)
+        if tok is not None:
+            out.append(tok.group(1))
+            if print_out is True:
+                print tok.group(1)
+
+    return out
+
+################################################################################
+def submit_set(beamtime, s, r):
+    "Submits all files of the dataset of a beamtime"
+
+    # get all files
+    files = list_files(beamtime, s, False)
+    if files is None or len(files) == 0:
+        print "No files found for set", s, "of beamtime", beamtime
+        return
+
+    # write files to temporary file
+    with open("/tmp/tmp_file_sub", "w") as f:
+
+        # loop over files
+        for i in files:
+
+            # check if range applies
+            if r is not None:
+
+                # try to extract file number
+                tok = re.match(".*_([0-9]{4})", i)
+                if tok is not None and tok.group(1) is not None:
+                    numb = int(tok.group(1))
+
+                    # check number
+                    if (numb < r[0]) or (numb > r[1]):
+                        continue
+
+            # add file to list
+            f.write("{}\n".format(i))
+
+    # call ARSubmitMC
+    subprocess.call(["ARSubmitMC", "config.cfg", "/tmp/tmp_file_sub"])
+
+    # remove temporary file
+    os.remove("/tmp/tmp_file_sub")
+
+    return
+
+################################################################################
+def get_index_range(arg):
+
+    # try to extract start and end index
+    tok = re.match("([0-9]*)-([0-9]*)", arg)
+    if tok is None or tok.group(1) is None or tok.group(2) is None:
+        raise argparse.ArgumentTypeError("{} is not a valid range!".format(arg))
+
+    # check range
+    start = int(tok.group(1))
+    end = int(tok.group(2))
+    if start > end:
+        raise argparse.ArgumentTypeError("{} is not a valid range!".format(arg))
+
+    return [start, end]
+
+################################################################################
+if __name__ == "__main__":
+
+    # configure arguments
+    parser = argparse.ArgumentParser(description = "Manage MC data sets")
+    req_args = parser.add_mutually_exclusive_group(required = True)
+    req_args.add_argument("-l", action = "store_const",
+                          dest = "action", const = "list",
+                          help = "list available data sets")
+    req_args.add_argument("-f", action = "store",
+                          dest = "dataset_ls", metavar = "SET",
+                          help = "list all files of the dataset SET")
+    req_args.add_argument("-s", action = "store",
+                          dest = "dataset_sub", metavar = "SET",
+                          help = "submit the dataset SET")
+    parser.add_argument("-r", type = get_index_range,
+                        dest = "range",
+                        help = "specify file range RANGE for submission")
+
+    #
+    # parse arguments
+    #
+
+    arg_parse = parser.parse_args()
+
+    # try to get the beamtime
+    beamtime = get_beamtime()
+    if beamtime is None:
+        print "Could not extract beamtime from directory structure"
+        sys.exit()
+
+    # list datasets
+    if arg_parse.action == "list":
+        list_sets(beamtime)
+
+    # list files of dataset
+    elif arg_parse.dataset_ls is not None:
+        list_files(beamtime, arg_parse.dataset_ls)
+
+    # submit files of dataset
+    elif arg_parse.dataset_sub is not None:
+        submit_set(beamtime, arg_parse.dataset_sub, arg_parse.range)
+
+    # quit here
+    else:
+        parser.print_help()
+        sys.exit()
+

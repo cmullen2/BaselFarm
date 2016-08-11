@@ -1,0 +1,6 @@
+Info in <ReadCaLibData>: Registered 32 data definitions
+Info in <ReadCaLibTypes>: Registered 23 type definitions
+Error in <ReadConfigFile>: Could not open configuration file '/home/chris/acqu/CaLib/config/config.cfg'
+Error in <TCMySQLManager>: Database host not included in configuration file!
+Error in <IsConnected>: Cannot access database!
+Error in <GetManager>: No connection to the database!

@@ -1,0 +1,32 @@
+##-----------------------------------------------------------------------
+##--Author      JRM Annand   29th Apr 2003
+##--Update      JRM Annand...17th May 2005
+##--Description
+##                *** Acqu++ <-> Root ***
+## Online/Offline Analysis of Sub-Atomic Physics Experimental Data
+##
+## Parameter File: FPcommTagger.dat (specified in CBanalysis.dat)
+## Setup analysis of the TA2KensTagger apparatus
+## This one sets up an analysis of the main focal-plane detector
+##----------------------------------------------------------------------------
+#       NMR field       Beam Energy
+Magnet:   1.8320305	1508.4
+#
+#         Name          Class Name      Setup file
+Detector: FPD		TA2Ladder 	data/Nov_08/Tagger/FP.dat
+Reconstruct:
+Initialise:
+#
+#Data-Cut: 1D Ladder_Time AND histogram 66 78
+#
+#
+#Display: 1D Nhit           20 0  20  -1
+#Display: 1D PhotonEnergy  150 0 1500  -1
+#Display: 2D FPD_Hits   352 0 352 -1  PhotonEnergy  150 0 1500 -1 
+#Display: 2D FPD_Hits	192 0 192 -1 Micro_Hits 96 0 96 -1
+#Display: 2D FPD_Hits   352 0 352 -1 FPD_Time 200 -200 200 -1
+#Display 2D Ladder_Doubles 352 0 352 -1 Micro_Doubles 96 0 96 -1
+
+#
+# Genereted by iChangeARconfig for run : 20025
+#

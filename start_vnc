@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# kernph environment
+if [ -r /usr/kernph_x86_64/etc/bash.kernph ] ; then
+    . /usr/kernph_x86_64/etc/bash.kernph;
+fi
+
+module unload x86_64/gcc/4.3
+module unload x86_64/root/5.34/gcc4.4
+module unload x86_64/geant4/gcc4.3/4.9.5
+
+vncserver -geometry 1440x900 :2
+

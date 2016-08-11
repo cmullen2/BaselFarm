@@ -1,0 +1,134 @@
+#!/bin/bash
+
+RET=0
+N_MERGED=0
+START_ID=0
+
+################################################################################
+# File merging function                                                        #
+################################################################################
+
+function mergeFiles {
+
+    LIST=""
+    FOUND_FILES=0
+
+    # loop over G4 files
+    for i in `ls *G4.root` ;
+    do
+        # create input file name
+        INPUT_FILE=`echo $i | sed 's/_G4//g'`
+        
+        # check if input file does not exist anymore
+        if [ ! -f $INPUT_FILE ] ; then
+            # check file consistency
+            checkMC -t h12 $i &> /dev/null
+
+            # take file if file status is ok
+            if [ $? -eq 0 ] ; then
+                # append to list
+                LIST="$LIST $i"
+
+                # increment file number
+                FOUND_FILES=`echo "$FOUND_FILES+1" | bc`
+                
+                echo "$FOUND_FILES: Adding $i"
+            fi
+        fi
+
+        # quit if enough files were found
+        if [ $FOUND_FILES -eq $NFILES ] ; then
+            break
+        fi
+
+    done
+
+    # abort when number of found files is less then number of files to merge
+    if [ $FOUND_FILES -lt $NFILES ] ; then
+        echo "Error: Only $FOUND_FILES were found, aborting file merge"
+        RET=1
+        return
+    fi
+    
+    #
+    # merge files
+    #
+    
+    echo "Found $FOUND_FILES files"
+    
+    # create merged file name
+    OUT=`printf "%04d" $START_ID`
+    PRE=`basename $PWD`
+    OUT=$PRE'_'$OUT.root
+    echo "Merging files to $OUT"
+    
+    # merge files
+    hadd $OUT $LIST
+    
+    # check if merging returned ok
+    if [ $? -eq 0 ] ; then
+        # check merged file
+        echo "Checking merged file $OUT"
+        checkMC --extended -t h12 $OUT &> /dev/null
+
+        # delete files if merging was ok
+        if [ $? -eq 0 ] ; then
+            echo "$OUT is ok"
+            rm $LIST
+        else
+            echo "$OUT is NOT ok!"
+            rm $OUT
+        fi
+
+        # increment merged file number and file index
+        N_MERGED=`echo "$N_MERGED+1" | bc`
+        START_ID=`echo "$START_ID+1" | bc`
+
+        RET=0
+    else
+        RET=1
+    fi
+
+    return
+}
+
+
+################################################################################
+# Main function                                                                #
+################################################################################
+
+# check arguments
+if [ $# -eq 0 ] || [ $# -gt 2 ] ; then
+    echo
+    echo "mergeA2MC : merge finished MC files"
+    echo
+    echo "Usage: mergeA2MC N_FILES [START_ID]"
+    echo
+    echo "N_FILES           : number of files to merge into one"
+    echo "START_ID          : start index of merged file numbering"
+    echo
+    exit
+fi
+
+# init variables
+NFILES=$1
+if [ $# -eq 2 ] ; then
+    START_ID=$2
+else
+    START_ID=1
+fi
+
+# loop until no more files can be merged
+while true; do
+
+    # merge files
+    mergeFiles   
+
+    # exit if no more files could be merged
+    if [ $RET -eq 1 ] ; then
+        exit
+    fi
+done
+
+echo "Created $N_MERGED merged files"
+

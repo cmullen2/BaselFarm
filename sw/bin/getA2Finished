@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# get current directory
+DIR=`pwd`
+
+# loop over G4 files
+for i in `ls *G4.root` ;
+do
+    # create input file name
+    INPUT_FILE=`echo $i | sed 's/_G4//g'`
+    
+    # check if input file does not exist anymore
+    if [ ! -f $INPUT_FILE ] ; then
+#        echo `ls -ltrh $i`
+        echo $i
+    fi
+done

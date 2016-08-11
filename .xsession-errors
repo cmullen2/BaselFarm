@@ -1,0 +1,111 @@
+Xsession: X session started for mullen at Tue May 10 15:23:13 CEST 2016
+X Error of failed request:  BadValue (integer parameter out of range for operation)
+  Major opcode of failed request:  109 (X_ChangeHosts)
+  Value in failed request:  0x5
+  Serial number of failed request:  6
+  Current serial number in output stream:  8
+localuser:mullen being added to access control list
+openConnection: connect: No such file or directory
+cannot connect to brltty at :0
+gnome-session[22311]: WARNING: GSIdleMonitor: IDLETIME counter not found
+
+(gnome-settings-daemon:22318): power-plugin-WARNING **: Unable to start power manager: RANDR extension is not present
+GNOME_KEYRING_CONTROL=/usr/users/mullen/.cache/keyring-DEKAN9
+GNOME_KEYRING_PID=22329
+
+(gnome-settings-daemon:22318): color-plugin-WARNING **: Unable to start color manager: RANDR extension is not present
+
+(gnome-settings-daemon:22318): xrandr-plugin-WARNING **: Unable to start xrandr manager: RANDR extension is not present
+GNOME_KEYRING_CONTROL=/usr/users/mullen/.cache/keyring-DEKAN9
+GPG_AGENT_INFO=/usr/users/mullen/.cache/keyring-DEKAN9/gpg:0:1
+GNOME_KEYRING_CONTROL=/usr/users/mullen/.cache/keyring-DEKAN9
+GPG_AGENT_INFO=/usr/users/mullen/.cache/keyring-DEKAN9/gpg:0:1
+GNOME_KEYRING_CONTROL=/usr/users/mullen/.cache/keyring-DEKAN9
+GPG_AGENT_INFO=/usr/users/mullen/.cache/keyring-DEKAN9/gpg:0:1
+SSH_AUTH_SOCK=/usr/users/mullen/.cache/keyring-DEKAN9/ssh
+
+(gnome-settings-daemon:22318): GLib-CRITICAL **: g_hash_table_destroy: assertion `hash_table != NULL' failed
+
+(gnome-settings-daemon:22318): keyboard-plugin-WARNING **: XKB extension not available
+
+(gnome-settings-daemon:22318): keyboard-plugin-WARNING **: Neither XKeyboard not Xfree86's keyboard extensions are available,
+no way to support keyboard autorepeat rate settings
+Xlib:  extension "RANDR" missing on display ":2".
+Window manager warning: Log level 32: could not find XKB extension.
+
+(gnome-settings-daemon:22318): PackageKit-WARNING **: failed to set proxy: GDBus.Error:org.gtk.GDBus.UnmappedGError.Quark._pk_5fengine_5ferror.Code3: failed to obtain auth
+
+(gnome-settings-daemon:22318): updates-plugin-WARNING **: failed to set proxies: GDBus.Error:org.gtk.GDBus.UnmappedGError.Quark._pk_5fengine_5ferror.Code3: failed to obtain auth
+
+(gnome-panel:22362): Gtk-CRITICAL **: gtk_accelerator_parse_with_keycode: assertion `accelerator != NULL' failed
+
+** (gnome-panel:22362): WARNING **: Unable to parse mouse modifier '(null)'
+
+Initializing tracker-store...
+
+** (nm-applet:22372): WARNING **: _nm_remote_settings_ensure_inited: (NMRemoteSettings) error initializing: Rejected send message, 2 matched rules; type="method_call", sender=":1.279" (uid=617 pid=22372 comm="nm-applet ") interface="org.freedesktop.DBus.Properties" member="GetAll" error name="(unset)" requested_reply="0" destination="org.freedesktop.NetworkManager" (uid=0 pid=3125 comm="/usr/sbin/NetworkManager ")
+
+Creating config directory:'/usr/users/mullen/.config/tracker'
+Tracker-Message: Setting up monitor for changes to config file:'/usr/users/mullen/.config/tracker/tracker-store.cfg'
+
+** (nm-applet:22372): WARNING **: Could not initialize NMClient /org/freedesktop/NetworkManager: Rejected send message, 2 matched rules; type="method_call", sender=":1.279" (uid=617 pid=22372 comm="nm-applet ") interface="org.freedesktop.DBus.Properties" member="GetAll" error name="(unset)" requested_reply="0" destination="org.freedesktop.NetworkManager" (uid=0 pid=3125 comm="/usr/sbin/NetworkManager ")
+** Message: applet now removed from the notification area
+Tracker-Message: Setting up monitor for changes to config file:'/usr/users/mullen/.config/tracker/tracker-store.cfg'
+
+(bluetooth-applet:22379): Bluetooth-WARNING **: Could not open RFKILL control device, please verify your installation
+Could not open log:'/usr/users/mullen/.local/share/tracker/tracker-store.log', No such file or directory
+All logging will go to stderr
+Starting log:
+  File:'/usr/users/mullen/.local/share/tracker/tracker-store.log'
+
+(gnome-panel:22362): Gtk-CRITICAL **: gtk_accelerator_parse_with_keycode: assertion `accelerator != NULL' failed
+
+** (gnome-panel:22362): WARNING **: Unable to parse mouse modifier '(null)'
+
+
+(gnome-panel:22362): GLib-GObject-WARNING **: /tmp/buildd/glib2.0-2.33.12+really2.32.4/./gobject/gsignal.c:2459: signal `size_request' is invalid for instance `0x2988b40'
+
+(gnome-settings-daemon:22318): Gdk-WARNING **: gnome-settings-daemon: Fatal IO error 11 (Resource temporarily unavailable) on X server :2.
+
+gnome-session[22311]: Gdk-WARNING: gnome-session: Fatal IO error 11 (Resource temporarily unavailable) on X server :2.
+
+g_dbus_connection_real_closed: Remote peer vanished with error: Underlying GIOStream returned 0 bytes on an async read (g-io-error-quark, 0). Exiting.
+
+(gnome-panel:22362): Gdk-WARNING **: gnome-panel: Fatal IO error 11 (Resource temporarily unavailable) on X server :2.
+
+g_dbus_connection_real_closed: Remote peer vanished with error: Underlying GIOStream returned 0 bytes on an async read (g-io-error-quark, 0). Exiting.
+
+(nm-applet:22372): Gdk-WARNING **: nm-applet: Fatal IO error 11 (Resource temporarily unavailable) on X server :2.
+
+
+(bluetooth-applet:22379): Gdk-WARNING **: bluetooth-applet: Fatal IO error 11 (Resource temporarily unavailable) on X server :2.
+
+
+(notification-daemon:22374): Gdk-WARNING **: notification-daemon: Fatal IO error 11 (Resource temporarily unavailable) on X server :2.
+
+
+(gnome-fallback-mount-helper:22385): Gdk-WARNING **: gnome-fallback-mount-helper: Fatal IO error 11 (Resource temporarily unavailable) on X server :2.
+
+
+(gdu-notification-daemon:22377): Gdk-WARNING **: gdu-notification-daemon: Fatal IO error 11 (Resource temporarily unavailable) on X server :2.
+
+
+(polkit-gnome-authentication-agent-1:22386): Gdk-WARNING **: polkit-gnome-authentication-agent-1: Fatal IO error 11 (Resource temporarily unavailable) on X server :2.
+
+
+(gnome-screensaver:22381): Gdk-WARNING **: gnome-screensaver: Fatal IO error 11 (Resource temporarily unavailable) on X server :2.
+
+
+(evolution-alarm-notify:22387): Gdk-WARNING **: evolution-alarm-notify: Fatal IO error 11 (Resource temporarily unavailable) on X server :2.
+
+Window manager warning: 
+(gnome-sound-applet:22378): Gdk-WARNING **: gnome-sound-applet: Fatal IO error 11 (Resource temporarily unavailable) on X server :2.
+
+g_dbus_connection_real_closed: Remote peer vanished with error: Underlying GIOStream returned 0 bytes on an async read (g-io-error-quark, 0). Exiting.
+
+Received signal:15->'Terminated'g_dbus_connection_real_closed: Remote peer vanished with error: Underlying GIOStream returned 0 bytes on an async read (g-io-error-quark, 0). Exiting.
+xcb_connection_has_error() returned true
+Fatal IO error 11 (Resource temporarily unavailable) on display ':2'.
+
+OK
+

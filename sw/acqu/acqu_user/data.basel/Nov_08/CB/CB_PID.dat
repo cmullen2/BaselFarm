@@ -1,0 +1,39 @@
+##-----------------------------------------------------------------------
+##--Author	JRM Annand   29th Apr 2003
+##--Update	JRM Annand...17th Dec 2005
+##--Description
+##                *** Acqu++ <-> Root ***
+## Online/Offline Analysis of Sub-Atomic Physics Experimental Data 
+##
+## Parameter File: CB.dat (specified in CBanalysis.dat)
+## or equivalent
+## Setup analysis of the Crystal Ball TA2CrystalBall apparatus
+## This one sets up an analysis of the Crystal_Ball NaI(Tl) array
+## the inner Particle ID Detector and 2-layer MWPC
+##
+##-----------------------------------------------------------------------
+##
+## Specify list of detectors which constitute the Crystal Ball apparatus
+##	  Name       Class Name      Setup file
+Detector: NaI        TA2MyCalArray    data/Nov_08/CB/NaI.dat 
+Detector: PID        TA2MyPlasticPID  data/Nov_08/PID/PID.dat
+#Detector: PID        TA2PlasticPID  data/Nov_08/PID/PID_per1.dat
+##
+## Data reconstruction method for Crystal Ball 
+Reconstruct:
+##
+## PDG database	# particles
+ParticleID: 	16
+##
+## Angle-difference limits (in deg.)  for hits correlation
+##              PID	MWPC
+AngleLimits:	15.0	20.0
+##
+## Do some post-initialisation.
+## Should usually be done before display is setup
+Initialise:
+##
+
+#
+# Genereted by iChangeARconfig for run : 20025
+#

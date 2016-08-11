@@ -1,0 +1,25 @@
+ADC 066_20454 whole thing is elevated a little, Really bad fits which are unnecesary as there is a clear pedestal peak.
+ADC 067_20462 Very few points, confused as most seem to be fitted well.
+
+ADC 085_21018 Lot of elevated points, but sig. no. at 100 level too. Fitting the wrong peak. 
+
+ADC 087_21038 Very few points, seems to be fitting a bin well before the peaks.
+
+ADC 231_23018 Almost two lines one at 111 and one at 99. Fitting wrong peak half the time.
+
+
+ADC 232_23034 Low at 94 and few scattered points around 115; Fitting wrong peak
+ADC 233_23038 High most at 110 few at 94. Don't see much of a problem
+
+ADC 235_23050 Significant splitting again between 112 and 99; Not much doing
+ADC 236_23066 Significant splitting again between 109 and 97; Bad fitting
+
+
+ADC 252_23194 Low at 88; Fine
+ADC 253_23198 Low at 87; Fine
+ADC 254_23206 Low at 89;
+ADC 304_24018 Splitting at 96 and 110; Fitting wrong peak
+
+
+
+Repeatedly bad runs 13560 and 13561.
